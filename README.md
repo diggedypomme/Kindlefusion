@@ -47,23 +47,21 @@ Generating from a book:
 <div style="border: 1px solid black; padding: 5px; display: inline-block;">
   <img src="/documentation/lookup.png" alt="Interface Preview">
 </div>
-
+<BR>
 Web interface:
 <div style="border: 1px solid black; padding: 5px; display: inline-block;">
   <img src="/documentation/interface.png" alt="Interface Preview">
 </div>
-
+<BR>
 Selecting from gallery:
 <div style="border: 1px solid black; padding: 5px; display: inline-block;">
   <img src="/documentation/gallery.png" alt="Gallery Preview">
 </div>
-
+<BR>
 Use of the mobile html camera "app"
 <div style="border: 1px solid black; padding: 5px; display: inline-block;">
   <img src="/documentation/camera.png" alt="Camera Preview">
 </div>
-
-
 
 
 
