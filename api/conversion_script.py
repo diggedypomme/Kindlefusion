@@ -1,4 +1,5 @@
 from flask import Flask, request, send_file, abort
+from flask_httpauth import HTTPBasicAuth
 from werkzeug.utils import secure_filename
 from PIL import Image
 import io
@@ -13,6 +14,7 @@ limiter = Limiter(
     default_limits=["100 per day", "50 per hour","1 per 10 second"],
     storage_uri="memory://",
 )
+auth = HTTPBasicAuth()
 
 # Set maximum file size in bytes
 MAX_FILE_SIZE = 10 * 1024 * 1024  # 10 MB
@@ -62,23 +64,29 @@ def validate_input_data(data):
     resized_image = pil_image.resize((600, 800))
 
     img_io = io.BytesIO()
-    resized_image.save(img_io, format="PNG")
+    resized_image.save(img_io, format="JPEG")
     img_io.seek(0)
 
     return img_io
+    
+#@limiter.exempt
+@auth.verify_password
+def verify_password(username, password):
+    if username == 'stablehorde' and password == 'sdf676_83g!!!das':
+        return True
+    return False
+    
 
 @app.route('/resize_image', methods=['POST'])
+@auth.login_required
 def resize_image():
     # Validate input data
     img_io = validate_input_data(request.files)
 
     # Return resized image as response
-    return send_file(img_io, mimetype='image/png')
+    return send_file(img_io, mimetype='image/jpg')
 
 
-@app.route('/hi')
-def hi():
-    return ("hi")
-    
+
 if __name__ == "__main__":
     app.run(debug=False, host='0.0.0.0')
