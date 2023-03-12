@@ -9,6 +9,8 @@ Now with extra feature creep of:
 - Manual search in Stable diffusion and Unsplash for a given search term
 - Mobile phone camera in the form of a local html file which passes an image directly to the kindle
 
+A personal project but it might be of interest to others too. I will likely also use it (without the checking for highlights) as a picture frame that can change based on voice inputs. I have another project that us set up for adding and displaying notes / to do lists, and may look at may look at merging that in at a later date.
+
 **Disclaimer: This project is a work in progress and may contain bugs or incomplete features.
 My concerns currently would be the effect of constantly checking the clippings file, or the risk potentially filling up a kindle with images. Very open to suggestions or advice with this**
 
@@ -23,7 +25,7 @@ To install this project, follow these steps:
 1. Install the required libraries that I haven't got round to listing yet
 2. Move the files in the "add_to_kindle" folder onto a kindle
 3. Add your stable horde key from https://stablehorde.net/register to secret_config.json. Without this you will be lower priority so the image generation will take longer.
-4. If you want to use the camera from a mobile, then copy the camera folder to it. I had to put it into the download folder for opera at file:///sdcard/Android/data/com.opera.browser/files/Download/cam/caaam5.html . This is not necessary and is just feature creep, but it's also pretty fun.
+4. If you want to use the camera from a mobile, then copy the camera folder to it. I had to put it into the download folder for opera at file:///sdcard/Android/data/com.opera.browser/files/Download/cam/caaam5.html . This is not necessary and is just feature creep, but cool to see the images being sent to the kindle.
 
 
 
