@@ -1,6 +1,12 @@
-# Kindlefusion
+# Kindlefusion 
+Tested on kindle4
+
+A setup to allow for generating images from kindle books with minimal interuption. Highlighting the text and then clicking ok will download and display an image using Stable Diffusion via StableHorde https://stablehorde.net/ . Now with extra feature creep of a mobile phone camera endpoint, and a gallery for viewing and selecting from previous images.
 
 **Disclaimer: This project is a work in progress and may contain bugs or incomplete features.**
+Note that this version is set up to use Stablehorde, but I previously made it for use with local Automatic1111 and can look at merging that code if it is of interest
+
+Please note that this could be simplified with an updated version of pillow, ffmpeg, imagemagick, or with the library webp, but I have struggled getting cross compilation working, and would appreciate advice for that. Currently it has a separate api endpoint whos sole purpose is to take in a heic webp in the form of a png and return it as a png/jpg. I am using jpg currently.
 
 ## Installation
 
