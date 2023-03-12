@@ -79,5 +79,5 @@ It makes use of:
 - Unsplash  - https://unsplash.com/ - For simple gallery lookup
 - NiLuJe  - https://github.com/NiLuJe/FBInk - FBInk display library
 - NiLuJe  - https://github.com/NiLuJe/py-fbink - FBInk display library python interface
-- NiLuJe  - https://www.mobil
+- NiLuJe  - https://www.mobileread.com/forums/showthread.php?t=225030 - Kindle tools
 - ChatGPT - for help, suggestions and a migrane
