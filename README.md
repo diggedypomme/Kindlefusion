@@ -42,18 +42,22 @@ Note that this will spam up your highlights, so you might want to back that up i
 
 Here are some previews of the interface:
 
+<kbd>
 Generating from a book:
 ![Interface Preview](/documentation/lookup.png)
-
+</kbd>
+<kbd>
 Web interface:
 ![Interface Preview](/documentation/interface.png)
-
+</kbd>
+<kbd>  
 Selecting from gallery:
 ![Gallery Preview](/documentation/gallery.png)
-
+</kbd>
+<kbd>
 Use of the mobile html camera "app"
 ![Camera Preview](/documentation/camera.png)
-
+</kbd>
 
 
 
