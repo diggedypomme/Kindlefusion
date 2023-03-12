@@ -42,8 +42,9 @@ Note that this will spam up your highlights, so you might want to back that up i
 
 Here are some previews of the interface:
 
-<kbd>
+
 Generating from a book:
+<kbd>
 ![Interface Preview](/documentation/lookup.png)
 </kbd>
 <kbd>
