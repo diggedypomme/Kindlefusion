@@ -1,0 +1,6 @@
+-Add back in the ability to use local Stable Diffusion
+-Add in the function for displaying text and to do lists
+-get webp added for local conversion if this is possible
+-description api access to chatgpt etc for character description
+-pull the book title and name to add to the prompt with a toggle for this
+-a toggle for stopping the scraping loop
