@@ -45,24 +45,23 @@ Here are some previews of the interface:
 
 <strong>Generating from a book:</strong>
 <div style="border: 1px solid black; padding: 5px; display: inline-block;">
-  <img src="/documentation/lookup.png" alt="Interface Preview">
+  <img src="/documentation/lookup.png" alt="Interface Preview" style="max-width: 50%; height: auto;">
 </div>
-<BR>
+<br>
 <strong>Web interface:</strong>
 <div style="border: 1px solid black; padding: 5px; display: inline-block;">
-  <img src="/documentation/interface.png" alt="Interface Preview">
+  <img src="/documentation/interface.png" alt="Interface Preview" style="max-width: 50%; height: auto;">
 </div>
-<BR>
+<br>
 <strong>Selecting from gallery:</strong>
 <div style="border: 1px solid black; padding: 5px; display: inline-block;">
-  <img src="/documentation/gallery.png" alt="Gallery Preview">
+  <img src="/documentation/gallery.png" alt="Gallery Preview" style="max-width: 50%; height: auto;">
 </div>
-<BR>
+<br>
 <strong>Use of the mobile html camera "app"</strong>
 <div style="border: 1px solid black; padding: 5px; display: inline-block;">
-  <img src="/documentation/camera.png" alt="Camera Preview">
+  <img src="/documentation/camera.png" alt="Camera Preview" style="max-width: 50%; height: auto;">
 </div>
-
 
 
 ## Credits
