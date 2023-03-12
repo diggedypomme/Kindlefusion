@@ -1,7 +1,13 @@
 # Kindlefusion 
 Tested on kindle4
 
-A setup to allow for generating images from kindle books with minimal interuption. Highlighting the text and then clicking ok will download and display an image using Stable Diffusion via StableHorde https://stablehorde.net/ . Now with extra feature creep of a mobile phone camera endpoint, and a gallery for viewing and selecting from previous images.
+A setup to allow for generating images from kindle books with minimal interuption. Highlighting the text and then clicking ok will download and display an image using Stable Diffusion via StableHorde https://stablehorde.net/ . 
+
+Now with extra feature creep of:
+- Gallery to view and select past images
+- Upload box to show image
+- Manual search in Stable diffusion and Unsplash for a given search term
+- Mobile phone camera in the form of a local html file which passes an image directly to the kindle
 
 **Disclaimer: This project is a work in progress and may contain bugs or incomplete features.**
 Note that this version is set up to use Stablehorde, but I previously made it for use with local Automatic1111 and can look at merging that code if it is of interest
@@ -32,11 +38,6 @@ To run this project, follow these steps:
 
 ## Guide
 
-The original goal was to have it so that selecting text and then clicking ok will do a lookup for you. This works, but I have had feature creep since then, so there are also now options to
-
--Search in Stable diffision and Unsplash for a given search term
--upload an image to display
--view and select past images from gallery
 
 
 
@@ -48,11 +49,9 @@ This project was created by [diggedypomme](https://github.com/diggedypomme).
 
 It makes use of:
 
--StableHorde https://stablehorde.net/ for image generation
--Ai Horde by db0 - https://github.com/db0/AI-Horde - Python interface for stable horde
--Unsplash  - https://unsplash.com/ - For simple gallery lookup
--NiLuJe  - https://github.com/NiLuJe/FBInk - FBInk display library
--NiLuJe  - https://github.com/NiLuJe/py-fbink - FBInk display library python interface
--NiLuJe  - https://www.mobileread.com/forums/showthread.php?t=225030 - FBInk jailbreak and many other files.
-
-
+- StableHorde https://stablehorde.net/ for image generation
+- AI Horde by db0 - https://github.com/db0/AI-Horde - Python interface for stable horde
+- Unsplash  - https://unsplash.com/ - For simple gallery lookup
+- NiLuJe  - https://github.com/NiLuJe/FBInk - FBInk display library
+- NiLuJe  - https://github.com/NiLuJe/py-fbink - FBInk display library python interface
+- NiLuJe  - https://www.mobil
