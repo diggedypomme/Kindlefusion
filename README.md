@@ -43,22 +43,22 @@ Note that this will spam up your highlights, so you might want to back that up i
 Here are some previews of the interface:
 
 
-Generating from a book:
+<strong>Generating from a book:</strong>
 <div style="border: 1px solid black; padding: 5px; display: inline-block;">
   <img src="/documentation/lookup.png" alt="Interface Preview">
 </div>
 <BR>
-Web interface:
+<strong>Web interface:</strong>
 <div style="border: 1px solid black; padding: 5px; display: inline-block;">
   <img src="/documentation/interface.png" alt="Interface Preview">
 </div>
 <BR>
-Selecting from gallery:
+<strong>Selecting from gallery:</strong>
 <div style="border: 1px solid black; padding: 5px; display: inline-block;">
   <img src="/documentation/gallery.png" alt="Gallery Preview">
 </div>
 <BR>
-Use of the mobile html camera "app"
+<strong>Use of the mobile html camera "app"</strong>
 <div style="border: 1px solid black; padding: 5px; display: inline-block;">
   <img src="/documentation/camera.png" alt="Camera Preview">
 </div>
