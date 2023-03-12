@@ -77,3 +77,4 @@ It makes use of:
 - NiLuJe  - https://github.com/NiLuJe/FBInk - FBInk display library
 - NiLuJe  - https://github.com/NiLuJe/py-fbink - FBInk display library python interface
 - NiLuJe  - https://www.mobil
+- ChatGPT - for help, suggestions and a migrane
