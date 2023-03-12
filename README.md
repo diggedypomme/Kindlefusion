@@ -36,7 +36,15 @@ To run this project, follow these steps:
 4. For additional functionality, open your web browser and navigate to `http://your_kindle_ip:5000`.
 
 
-## Guide
+## Previews
+
+Here are some previews of the interface:
+
+![Camera Preview](/documentation/camera.png)
+
+![Gallery Preview](/documentation/gallery.png)
+
+![Interface Preview](/documentation/interface.png)
 
 
 
