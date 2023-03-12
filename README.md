@@ -43,31 +43,25 @@ Note that this will spam up your highlights, so you might want to back that up i
 Here are some previews of the interface:
 
 
-<div style="border: 1px solid black; padding: 5px;">
-    Generating from a book:
-    <br>
-    <img src="/documentation/lookup.png" alt="Interface Preview">
+Generating from a book:
+<div style="border: 1px solid black; padding: 5px; display: inline-block;">
+  <img src="/documentation/lookup.png" alt="Interface Preview">
 </div>
 
-<div style="border: 1px solid black; padding: 5px;">
-    Web interface:
-    <br>
-    <img src="/documentation/interface.png" alt="Interface Preview">
+Web interface:
+<div style="border: 1px solid black; padding: 5px; display: inline-block;">
+  <img src="/documentation/interface.png" alt="Interface Preview">
 </div>
 
-<div style="border: 1px solid black; padding: 5px;">
-    Selecting from gallery:
-    <br>
-    <img src="/documentation/gallery.png" alt="Gallery Preview">
+Selecting from gallery:
+<div style="border: 1px solid black; padding: 5px; display: inline-block;">
+  <img src="/documentation/gallery.png" alt="Gallery Preview">
 </div>
 
-<div style="border: 1px solid black; padding: 5px;">
-    Use of the mobile html camera "app"
-    <br>
-    <img src="/documentation/camera.png" alt="Camera Preview">
+Use of the mobile html camera "app"
+<div style="border: 1px solid black; padding: 5px; display: inline-block;">
+  <img src="/documentation/camera.png" alt="Camera Preview">
 </div>
-
-
 
 
 
