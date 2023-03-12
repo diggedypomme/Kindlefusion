@@ -9,7 +9,8 @@ Now with extra feature creep of:
 - Manual search in Stable diffusion and Unsplash for a given search term
 - Mobile phone camera in the form of a local html file which passes an image directly to the kindle
 
-**Disclaimer: This project is a work in progress and may contain bugs or incomplete features. My concerns currently would be the effect of constantly checking the clippings file, and potentially filling up a kindle with images. Very open to suggestions or advice with this**
+**Disclaimer: This project is a work in progress and may contain bugs or incomplete features.
+My concerns currently would be the effect of constantly checking the clippings file, or the risk potentially filling up a kindle with images. Very open to suggestions or advice with this**
 
 Note that this version is set up to use Stablehorde, but I previously made it for use with local Automatic1111 and can look at merging that code if it is of interest
 
