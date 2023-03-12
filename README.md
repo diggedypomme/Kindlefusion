@@ -33,18 +33,29 @@ To run this project, follow these steps:
 2. Open port 5000 if you want to access the helper page via wifi. This is done with the command "iptables -A INPUT -p tcp --dport 5000 -i wlan0 -j ACCEPT"
 3. Run "python3 stable11.py"
 5. Now either heighlight some text and when you click finish, it will send that off to stable diffusion and bring back an image for you. In my experience this is between around 5 seconds and around 30 seconds, however the API must be running on the remote server due to the webp file. This is not currently running but you can run your own. I need to get some feedback as to whether it is secure enough for hosting on the net. In the longrun I would like to replace this with using a compiled webp binary on the kindle itself.
-4. For additional functionality, open your web browser and navigate to `http://your_kindle_ip:5000`.
+4. To clear the image just click to change the page. Note that all generated pics are saved to the /gallery/images folder. 
+5. For additional functionality (or to see / load previous images) , open your web browser and navigate to `http://your_kindle_ip:5000`.
 
+Note that this will spam up your highlights, so you might want to back that up if you don't want to have to clear it out afterwards
 
 ## Previews
 
 Here are some previews of the interface:
 
-![Camera Preview](/documentation/camera.png)
+Generating from a book:
+![Interface Preview](/documentation/lookup.png)
 
+Web interface:
+![Interface Preview](/documentation/interface.png)
+
+Selecting from gallery:
 ![Gallery Preview](/documentation/gallery.png)
 
-![Interface Preview](/documentation/interface.png)
+Use of the mobile html camera "app"
+![Camera Preview](/documentation/camera.png)
+
+
+
 
 
 
