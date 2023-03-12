@@ -43,23 +43,29 @@ Note that this will spam up your highlights, so you might want to back that up i
 Here are some previews of the interface:
 
 
-Generating from a book:
-<kbd>
-![Interface Preview](/documentation/lookup.png)
-</kbd>
-<kbd>
-Web interface:
-![Interface Preview](/documentation/interface.png)
-</kbd>
-<kbd>  
-Selecting from gallery:
-![Gallery Preview](/documentation/gallery.png)
-</kbd>
-<kbd>
-Use of the mobile html camera "app"
-![Camera Preview](/documentation/camera.png)
-</kbd>
+<div style="border: 1px solid black; padding: 5px;">
+    Generating from a book:
+    <br>
+    <img src="/documentation/lookup.png" alt="Interface Preview">
+</div>
 
+<div style="border: 1px solid black; padding: 5px;">
+    Web interface:
+    <br>
+    <img src="/documentation/interface.png" alt="Interface Preview">
+</div>
+
+<div style="border: 1px solid black; padding: 5px;">
+    Selecting from gallery:
+    <br>
+    <img src="/documentation/gallery.png" alt="Gallery Preview">
+</div>
+
+<div style="border: 1px solid black; padding: 5px;">
+    Use of the mobile html camera "app"
+    <br>
+    <img src="/documentation/camera.png" alt="Camera Preview">
+</div>
 
 
 
