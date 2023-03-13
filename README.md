@@ -7,6 +7,8 @@ Youtube explanation video:
 <BR>
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/SueGVpyrgG8/0.jpg)](https://www.youtube.com/watch?v=SueGVpyrgG8)
 
+Mobileread thread: https://www.mobileread.com/forums/showthread.php?t=352505
+
 Now with extra feature creep of:
 - Gallery to view and select past images
 - Upload box to show image
