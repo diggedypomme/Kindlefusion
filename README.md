@@ -3,6 +3,8 @@ Tested on kindle4
 
 A setup to allow for generating images from kindle books with minimal interuption. Highlighting the text and then clicking ok will download and display an image using Stable Diffusion via StableHorde https://stablehorde.net/ . 
 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/SueGVpyrgG8/0.jpg)](https://www.youtube.com/watch?v=SueGVpyrgG8)
+
 Now with extra feature creep of:
 - Gallery to view and select past images
 - Upload box to show image
