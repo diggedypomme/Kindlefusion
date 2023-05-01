@@ -72,6 +72,12 @@ Here are some previews of the interface:
 <div style="border: 1px solid black; padding: 5px; display: inline-block;">
   <img src="/documentation/camera.png" alt="Camera Preview" style="max-width: 50%; height: auto;">
 </div>
+<strong>Mounted into picture frames</strong>
+<div style="border: 1px solid black; padding: 5px; display: inline-block;">
+  <img src="/documentation/1682950016238.jpeg" alt="Camera Preview" style="max-width: 50%; height: auto;">
+</div>
+
+
 
 
 ## Credits
