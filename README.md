@@ -1,5 +1,7 @@
 # Kindlefusion 
-Tested on kindle4
+Tested on kindle4 & kindle 3
+
+Please note that I have a new version done, with lots of updates, but I just need to record a new video before uploading. This should be done in the next couple of days.
 
 A setup to allow for generating images from kindle books with minimal interuption. Highlighting the text and then clicking ok will download and display an image using Stable Diffusion via StableHorde https://stablehorde.net/ . 
 
