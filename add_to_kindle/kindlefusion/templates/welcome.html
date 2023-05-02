@@ -1,0 +1,846 @@
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kindlefusion</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f1f1f1;
+      }
+
+
+h1 {
+   text-align: center;
+        margin: 20px 0;
+  font-family: sans-serif;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+color: #877c75;
+}
+
+h2 {
+   text-align: center;
+        margin: 20px 0;
+  font-family: sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+color: #898684;
+}
+
+
+
+
+      iframe {
+        width: 70%;
+      
+        border: none;
+        margin: 20px auto;
+        display: block;
+      }
+      label, textarea {
+        display: block;
+        margin: 20px auto;
+        width: 70%;
+      }
+      button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #3e8e41;
+      }
+      form {
+        display: block;
+        margin: 20px auto;
+        width: 70%;
+        text-align: center;
+      }
+      input[type="file"] {
+        display: inline-block;
+        margin-right: 10px;
+      }
+      input[type="submit"] {
+        display: inline-block;
+        margin-left: 10px;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+iframe {
+  width: 70%;
+
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #ccc;
+  margin: 20px auto;
+  display: block;
+}
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button-group button {
+  margin: 0 10px;
+}
+.credits {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #b4b4b4;
+  color: white;
+  font-size: 12px;
+  height: 30px;
+  line-height: 30px;
+  text-align: right;
+}
+
+.credits a {
+  color: white;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.credits a:first-child {
+  margin-left: 0;
+} 
+
+
+
+
+
+.dropdown-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+label {
+  margin-right: 10px;
+}
+
+select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  width: 200px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+
+
+
+
+ </style>
+  </head>
+  <body>
+    <h1>Kindlefusion ¹⁶</h1>
+    <iframe name="myFrame" id="myFrame"  height="50px" src=""></iframe>
+    <label for="myInput">Enter text to search:</label>
+    <textarea id="myInput"></textarea>
+<div class="button-group">
+  <button onclick="sendToServer()">Check with Stablefusion</button>
+  <button onclick="unsplash()">Check with unsplash</button>
+  <button onclick="unsplash_featured()">Random unsplash featured</button>
+</div>
+ 
+ <div id="StableDiffusionBlock" class="button-group" >
+ 
+ <select id="mechanism" style="width: 270px">
+  <option value="hordejs">Stable Horde with JS convert</option>
+  <option value="hordeapi">Stable Horde with API convert</option>
+  <option value="automatic1111">Automatic1111</option>
+  <option value="automatic1111_old">Automatic1111 with the old api</option>
+  <option value="horde_api_key">Change Stablehorde API key</option>
+</select>
+
+
+<div id="stable_mechanism_input" class="button-group">
+<textarea style="    width: 250px;" id="stable_extras"></textarea>
+<button id="submit_stable_dropdown" style="    height: 50px;    width: 60px;" onclick="submit_stable_dropdown()">OK</button>
+
+</div>
+<BR>
+
+
+ </div>
+ <BR>
+ <center>
+ <div id="stable_mechanism_title" >Stable mechanism type</div>
+ </center>
+ <BR>
+ 
+ 
+    <hr>
+<BR>
+    <h2>Image Upload </h2>
+    <form method="post" action="/uploadthen" enctype="multipart/form-data"  height="100" target="myFrame">
+      <div>
+        <input type="file" name="image">
+        <input type="submit" value="Upload">
+      </div>
+    </form>
+
+
+<BR><HR><BR><h2>Past images </h2>
+<div class="button-group">
+<select id="mySelect" name="options">
+  <option value="Update options please">Oops, this hasn't worked</option>
+  <!-- add more options as needed -->
+</select>
+
+<button onclick="updateOptions()">Update</button>
+<button onclick="showGallery()">Gallery</button>
+<button onclick="loadOptions()">Load</button>
+
+
+
+
+</div>
+
+
+<div id="galleryPopup" style="display: none; position: fixed; top: 10%; left: 10%; width: 80%; height: 80%; background-color: white; border: 2px solid gray; border-radius: 10px; z-index: 9999; padding: 20px; overflow-y: scroll;">
+  <h3>Gallery</h3>
+  <div id="galleryThumbnails"></div>
+  <button onclick="closeGallery()">Close</button>
+</div>
+
+<BR>
+  <hr>
+<BR>
+<h2>Downloads</h2>
+
+<div class="button-group">
+
+
+<button onclick="window.location.href='/static/run_on_phone.zip'">Download PC scripts</button>
+<button onclick="window.location.href='/download_caaam'">Download caaam</button>
+<button onclick="window.location.href='/download_caaam_image'">Download caaam image</button>
+
+
+
+</div>
+
+
+
+<HR>
+<BR>
+<h2>Settings </h2>
+
+<div class="button-group">
+<button onclick="document.getElementById('myFrame').src='/disablescreensaver'">Disable Screensaver</button>
+<button onclick="document.getElementById('myFrame').src='/enablescreensaver'">Enable Screensaver</button>
+</div>
+<BR>
+<div class="button-group">
+<input style="    width: 200px;" id="nameinput" value="{{ loaded_kindlename }}"></input>
+<button onclick="changename()">Change kindle name</button>
+</div>
+<BR>
+
+<div class="button-group">
+<button onclick=" window.location.href = 'caaam';">Visit Caaaam Mini</button>
+</div>
+<BR><BR>
+
+
+    <img id="pictureFromCamera" style="display:none;
+	    border-style: solid;
+    border-width: 15px;
+	" />
+
+
+
+<div class="credits">
+
+  <span> </span>
+<a href="#">| By Superpomme  </a>
+  <a href="#">| Images provided by <a href="https://unsplash.com/">Unsplash</a> </a>
+  <a href="#">| Image generation by <a href="https://stablehorde.net/">Stablehorde </a></a>
+  <a href="#">| db0 - AI-Horde <a href="https://github.com/db0/AI-Horde">Github </a></a>
+
+  <a href="#">| Many thanks to NiLuJe for tools and fbink <a href="https://github.com/NiLuJe/FBInk">Github</a> </a>
+
+/
+
+</div>
+
+
+
+    <script>
+      function sendToServer() {
+	  
+	  if (document.getElementById("mechanism").value=="hordejs"){
+	  searchtext()
+	  
+	  }
+	  else 	  if (document.getElementById("mechanism").value=="automatic1111"){
+	  //searchtext()
+	   
+	  //@app.route('/text/<remote_address>/<text>'
+		
+		let text_to_search=document.getElementById("myInput").value
+		let address_path=document.getElementById("stable_extras").value.split(":")[0]; //this would need to change for anyone not running it on the normal port
+		
+		
+		var frame = document.getElementById("myFrame");
+        var input = document.getElementById("myInput").value;
+        
+        var url = "/text/"+address_path+"/"+text_to_search;
+        frame.src = url;
+		
+		
+	  }
+	  else{
+	  
+	  
+        var frame = document.getElementById("myFrame");
+        var input = document.getElementById("myInput").value;
+        var url = "/do_html_fusion/" + input;
+        frame.src = url;
+		}
+		
+		
+      }
+      function unsplash() {
+        var frame = document.getElementById("myFrame");
+        var input = document.getElementById("myInput").value;
+        var url = "/image-search/" + input;
+        frame.src = url;
+      }
+      function unsplash_featured() {
+        var frame = document.getElementById("myFrame");
+
+        var url = "/featured/";
+        frame.src = url;
+      }
+
+function updateOptions() {
+  fetch('/options/') // replace with your Flask endpoint
+    .then(response => response.json())
+    .then(data => {
+      const select = document.getElementById('mySelect');
+      select.innerHTML = '';
+      data.forEach(option => {
+        const optionElement = document.createElement('option');
+        optionElement.value = option.id;
+        optionElement.text = `${option.id} | ${option.origin} | ${option.search_term}`;
+        select.appendChild(optionElement);
+      });
+    });
+}
+
+
+function loadOptions() {
+  const select = document.getElementById('mySelect');
+  const selectedOption = select.options[select.selectedIndex].value;
+  const url = `open_id/${selectedOption}`;
+  document.getElementById('myFrame').src = url;
+}
+
+updateOptions()
+
+
+function showGallery() {
+  const select = document.getElementById('mySelect');
+  const dropdownLength = select.length;
+
+  const galleryContent = document.createElement('div');
+
+const closeButton2 = document.createElement('button');
+closeButton2.textContent = 'Close';
+closeButton2.addEventListener('click', closeGallery);
+
+galleryContent.appendChild(closeButton2);
+
+
+
+  galleryContent.classList.add('popup-content');
+
+
+
+  for (let i = 0; i < dropdownLength; i++) {
+    const thumbnailContainer = document.createElement('div');
+    thumbnailContainer.classList.add('thumbnail-container');
+thumbnailContainer.classList.add('thumbnail-container');
+thumbnailContainer.style.display = 'flex';
+thumbnailContainer.style.alignItems = 'center';
+thumbnailContainer.style.justifyContent = 'center';
+
+
+
+
+
+    const thumbnail = document.createElement('img');
+    thumbnail.src = `static/images/${select.options[i].value}.jpg`;
+    thumbnail.style.width = "300px";
+    thumbnail.style.border = "2px solid black";
+    thumbnail.style.borderRadius = "10px";
+    thumbnail.style.margin = "10px";
+
+    const thumbnailLabel = document.createElement('span');
+    thumbnailLabel.style.fontSize = "20px";
+    thumbnailLabel.textContent = select.options[i].text;
+    thumbnailLabel.style.marginRight = "10px";
+
+    const button = document.createElement('button');
+    button.textContent = 'Set';
+    button.style.fontSize = "20px";
+    button.onclick = () => {
+      const id = select.options[i].value;
+      const url = `open_id/${id}`;
+      document.getElementById('myFrame').src = url;
+    };
+
+    thumbnailContainer.appendChild(thumbnail);
+    thumbnailContainer.appendChild(thumbnailLabel);
+    thumbnailContainer.appendChild(button);
+
+    galleryContent.appendChild(thumbnailContainer);
+  }
+
+  const galleryPopup = document.getElementById('galleryPopup');
+  galleryPopup.innerHTML = '';
+  galleryPopup.appendChild(galleryContent);
+  galleryPopup.style.display = 'block';
+
+const closeButton = document.createElement('button');
+closeButton.textContent = 'Close';
+closeButton.addEventListener('click', closeGallery);
+
+galleryContent.appendChild(closeButton);
+
+
+}
+
+
+  function closeGallery() {
+    const galleryPopup = document.getElementById('galleryPopup');
+    galleryPopup.style.display = 'none';
+  }
+
+
+//-----settings for StableDiffusion-------//
+const track_dropdown = document.getElementById("mechanism");
+track_dropdown.addEventListener("change", function() {
+  localStorage.setItem("selected_mechanism", this.value);
+  change_stable_dropdown(this.value)
+});
+
+const savedOption = localStorage.getItem("selected_mechanism");
+if (savedOption) {
+   const track_dropdown = document.getElementById("mechanism");
+  track_dropdown.value = savedOption;
+}
+
+
+if (localStorage.getItem("stable_myhorde_converter") === null) {
+  localStorage.setItem("stable_myhorde_converter", "192.168.0.10:5000");
+}
+let stable_myhorde_converter = localStorage.getItem("stable_myhorde_converter");
+
+if (localStorage.getItem("stable_automatic_address") === null) {
+  localStorage.setItem("stable_automatic_address", "192.168.0.10:7860");
+}
+let stable_automatic_address = localStorage.getItem("stable_automatic_address");
+
+if (localStorage.getItem("stable_automatic_converter_address") === null) {
+  localStorage.setItem("stable_automatic_converter_address", "192.168.0.10:5000");
+}
+let stable_automatic_converter_address = localStorage.getItem("stable_automatic_converter_address");
+
+
+
+
+
+function change_stable_dropdown(inputtext)
+{
+console.log("changed")
+inputtext=document.getElementById("mechanism").value
+//document.getElementById("stable_extras").style=
+let explanation_text=""
+
+
+
+document.getElementById("stable_extras").value = inputtext;
+
+
+//document.getElementById("myInput").disabled = false;
+
+
+if (inputtext=="hordejs"){
+explanation_text="Nothing to change"
+document.getElementById("stable_extras").disabled = true;
+document.getElementById("submit_stable_dropdown").disabled = true;
+document.getElementById("stable_extras").value = "Nothing to enter.";
+document.getElementById("stable_mechanism_title").innerHTML = "Uses this current browser the do the conversion from WebP. Default.";
+}
+else if (inputtext=="hordeapi"){
+document.getElementById("stable_extras").disabled = false;
+document.getElementById("submit_stable_dropdown").disabled = false;
+document.getElementById("stable_mechanism_title").innerHTML = "This uses the separate api to remotely convert from WebP (just use the JS one instead).<BR> Enter remote address";
+ document.getElementById("stable_extras").value =localStorage.getItem("stable_myhorde_converter")
+
+}
+else if (inputtext=="automatic1111"){
+document.getElementById("stable_extras").disabled = false;
+document.getElementById("submit_stable_dropdown").disabled = false;
+document.getElementById("stable_mechanism_title").innerHTML = "Used to directly connect to Automatic1111. Add the address and port (eg '192.168.0.10:7860')";
+ document.getElementById("stable_extras").value =localStorage.getItem("stable_automatic_address")
+}
+else if (inputtext=="automatic1111_old"){
+document.getElementById("stable_extras").disabled = false;
+document.getElementById("submit_stable_dropdown").disabled = false;
+document.getElementById("stable_mechanism_title").innerHTML = "Bridge for if you are running Automatic1111 in API mode rather than share mode. <BR> Add the address and port, for example (eg '192.168.0.10:5000') ";
+document.getElementById("stable_extras").value =localStorage.getItem("stable_automatic_converter_address")
+}
+
+else if (inputtext=="horde_api_key"){
+
+
+document.getElementById("stable_extras").disabled = false;
+document.getElementById("submit_stable_dropdown").disabled = false;
+document.getElementById("stable_extras").value = "";
+document.getElementById("stable_mechanism_title").innerHTML = "Changing the key for Stablehorde. <BR>This will not display current key";
+
+
+
+}
+
+else{console.log("this should not have happened")}
+
+
+
+}
+
+change_stable_dropdown()
+
+
+function changename()
+{
+console.log("changed name")
+document.getElementById('myFrame').src="/setname/"+document.getElementById('nameinput').value
+
+}
+
+
+
+function submit_stable_dropdown()
+{
+console.log("ran submit_stable_dropdown()")
+let contents=document.getElementById("stable_extras").value
+let active_dropdown=document.getElementById("mechanism").value
+
+let inputtext=active_dropdown
+
+
+
+
+if (inputtext=="hordejs"){
+explanation_text="Nothing to change"
+console.log("running hordejs")
+searchtext()
+}
+else if (inputtext=="hordeapi"){
+//document.getElementById("stable_extras").disabled = false;
+//document.getElementById("stable_mechanism_title").innerHTML = "This uses the separate api to remotely convert from WebP (just use the JS one instead).<BR> Enter remote address";
+// document.getElementById("stable_extras").value =localStorage.getItem("stable_myhorde_converter")
+// document.setElementById("stable_extras").value =localStorage.getItem("stable_myhorde_converter")
+
+console.log("hordeapi")
+localStorage.setItem("stable_myhorde_converter",document.getElementById("stable_extras").value)
+
+}
+else if (inputtext=="automatic1111"){
+
+ 
+ console.log("automatic1111")
+localStorage.setItem("stable_automatic_address",document.getElementById("stable_extras").value)
+ 
+}
+else if (inputtext=="automatic1111_old"){
+console.log("automatic1111_old")
+localStorage.setItem("stable_automatic_converter_address",document.getElementById("stable_extras").value)
+//document.getElementById('myFrame').src='/set_automatic_bridge/'+document.getElementById("stable_extras").value
+}
+
+else if (inputtext=="horde_api_key"){
+console.log("horde_api_key")
+document.getElementById('myFrame').src='/sethordeapikey/'+document.getElementById("stable_extras").value
+
+
+}
+
+else{console.log("this should not have happened")}
+
+
+
+
+
+}
+
+//-----xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-------//
+// Stuff from Caaam
+
+
+
+
+
+function upload(divid) {
+
+  var fileInput = document.getElementById(divid);
+  var file = fileInput.files[0];
+  
+  // create a canvas element and load the image file into it
+  var img = new Image();
+  img.onload = function() {
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
+    var MAX_WIDTH = 600;
+    var MAX_HEIGHT = 800;
+    var width = img.width;
+    var height = img.height;
+    
+    // calculate the new dimensions to maintain aspect ratio
+    if (width > height) {
+      if (width > MAX_WIDTH) {
+        height *= MAX_WIDTH / width;
+        width = MAX_WIDTH;
+      }
+    } else {
+      if (height > MAX_HEIGHT) {
+        width *= MAX_HEIGHT / height;
+        height = MAX_HEIGHT;
+      }
+    }
+    
+    // set the canvas dimensions to the new dimensions
+    canvas.width = width;
+    canvas.height = height;
+    
+    // draw the image onto the canvas and convert to grayscale
+    ctx.drawImage(img, 0, 0, width, height);
+    var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    var data = imageData.data;
+    for (var i = 0; i < data.length; i += 4) {
+      var avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+      data[i] = avg;
+      data[i + 1] = avg;
+      data[i + 2] = avg;
+    }
+    ctx.putImageData(imageData, 0, 0);
+    
+    // convert the canvas image to a Blob object and append to FormData
+    canvas.toBlob(function(blob) {
+      var formData = new FormData();
+      formData.append("image", blob, "image.jpg");
+
+      // send the form data using XMLHttpRequest
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", document.getElementById("ipbox").value);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+          console.log(xhr.responseText);
+        }
+      };
+      xhr.send(formData);
+    }, "image/jpeg");
+  };
+  img.src = window.URL.createObjectURL(file);
+  //document.getElementById("pictureFromCamera").style.border=" 15px solid black"
+  document.getElementById("pictureFromCamera").style.display="block"
+}
+
+
+
+
+     function searchtext()
+	 {
+	 let text_to_search=document.getElementById("myInput").value
+	 loadAndDisplayImage(text_to_search)
+	 
+	 
+	//console.log("searching: "+text_to_search)
+	//		var frame = document.getElementById("response-frame"); // get the response iframe
+	//	var transcriptDiv = document.getElementById("pictureFromCamera"); // get the transcript div
+	//	var framenotfromcamera = document.getElementById("framenotfromcamera"); // get the transcript div
+	//
+	//					  let addressInput = document.getElementById("ipbox");
+	//		  let addressValue = addressInput.value;
+	//		  let link = addressValue.replace("/uploadthen", "");
+	//
+	//	let thelink=link+"/do_html_fusion/" +  encodeURIComponent(text_to_search)
+	//		
+	//		//transcriptDiv.style.display="none"
+	//		//framenotfromcamera.style.display="block"
+	//		//framenotfromcamera.innerHTML = "You said: " + transcript
+	//		//
+	//		transcriptDiv.innerHTML = `<BR><iframe id='response-frame' src=`+thelink+`		></iframe>`; // display transcript in div
+	//		
+	//		
+	//		
+	//		
+	//		//document.getElementById("response-frame").src = link+"/do_html_fusion/" + encodeURIComponent(transcript); // send transcript to server and load response in iframe
+	//		//document.getElementById("microphone-btn").innerHTML = "Start Recording"; // reset button text
+		};
+	 
+	 
+	 
+
+
+
+    function loadAndDisplayImage(transcript) {
+	
+	
+	
+	
+			  //let addressInput = document.getElementById("ipbox");
+			  //let addressValue = addressInput.value;
+			  let addressValue = "";
+			  let link = addressValue.replace("/uploadthen", "");
+				
+			
+			let thelink=link+"/do_html_fusion_js/" + encodeURIComponent(transcript)
+			
+	
+	
+	console.log("attempting")
+  $.ajax({
+    url: thelink,
+    method: "GET",
+    success: function(response) {
+      var webpImg = new Image();
+      webpImg.src = "data:image/webp;base64," + response;
+      webpImg.alt = "WebP image";
+	   document.getElementById("pictureFromCamera").setAttribute("src", "data:image/webp;base64," + response)
+      //document.body.appendChild(webpImg);
+      
+
+
+
+      var jpgImg = new Image();
+      jpgImg.src = "data:image/jpeg;base64," + response;
+      jpgImg.alt = "JPEG image";
+      jpgImg.onload = function() {
+        var canvas = document.createElement('canvas');
+        canvas.width = jpgImg.width;
+        canvas.height = jpgImg.height;
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(jpgImg, 0, 0);
+        var formData = new FormData();
+        formData.append('image', dataURItoBlob(canvas.toDataURL('image/jpeg')), 'image.jpg');
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST',"/uploadthen");
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            console.log('Image uploaded successfully!');
+          } else {
+            console.log('An error occurred while uploading the image.');
+          }
+        };
+        xhr.send(formData);
+      }
+	 
+      
+    }
+  });
+} 
+
+    function convertToJpeg(base64Data) {
+      // create a canvas element
+      var canvas = document.createElement('canvas');
+      var ctx = canvas.getContext('2d');
+
+      // create an image element and set its source to the base64 data
+      var img = new Image();
+      img.src = "data:image/webp;base64," + base64Data;
+
+      // set the canvas size to match the image size
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      // draw the image on the canvas
+      ctx.drawImage(img, 0, 0);
+	  
+	  
+	  
+
+      // return the JPEG-encoded data
+      return canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpeg);base64,/, "");
+    }
+	
+function dataURItoBlob(dataURI) {
+  // Split the data URI into its components
+  var components = dataURI.split(',');
+  var mimeType = components[0].split(':')[1];
+  var byteString = atob(components[1]);
+
+  // Create a Uint8Array from the byte string
+  var array = new Uint8Array(byteString.length);
+  for (var i = 0; i < byteString.length; i++) {
+    array[i] = byteString.charCodeAt(i);
+  }
+
+  // Create a Blob from the Uint8Array and return it
+  return new Blob([array], { type: mimeType });
+}
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
+ 

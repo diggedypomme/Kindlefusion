@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>caaaam 9</title>
+	<style>
+	body {
+		background-image: url("/static/camera.png");
+		background-repeat: no-repeat;
+		background-size: cover;
+		min-height: 100vh;
+	}
+
+	#cameraFileInput {
+		display: none;
+	}
+
+	#pictureFromCamera {
+		position: absolute;
+		width: 80%;
+		height: auto;
+		min-height: 200px;
+		margin-top: 16px;
+		//border: 10px solid black;
+		border-radius: 30px;
+		bottom: 50%;
+		left: 50%;
+		transform: translate(-50%, 50%);
+		background-color: white;
+	}
+
+	#framenotfromcamera {
+		position: absolute;
+		width: 80%;
+		height: auto;
+		min-height: 200px;
+		margin-top: 16px;
+		//border: 10px solid black;
+		border-radius: 30px;
+		bottom: 50%;
+		left: 50%;
+		transform: translate(-50%, 50%);
+		background-color: #bcccff;
+		text-align: center;
+		font-size: 55px;
+	}
+
+	#frame_for_search {
+		position: absolute;
+		width: 80%;
+		height: auto;
+		min-height: 200px;
+		margin-top: 16px;
+		//border: 10px solid black;
+		border-radius: 30px;
+		bottom: 50%;
+		left: 50%;
+		transform: translate(-50%, 50%);
+		background-color: #bcccff;
+		text-align: center;
+		font-size: 55px;
+	}
+
+	#frame_for_search input[type="text"] {
+		width: 90%;
+		padding: 10px;
+		border-radius: 20px;
+		border: none;
+		background-color: #fff;
+		margin: 10px auto;
+		transform: translateY(25%);
+	}
+
+	#closeButton {
+		display: none;
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		width: 40px;
+		height: 40px;
+		background-color: black;
+		color: white;
+		border-radius: 50%;
+		text-align: center;
+		line-height: 40px;
+		font-size: 24px;
+		cursor: pointer;
+	}
+
+	#pictureFromCamera:hover+#closeButton {
+		display: block;
+		background-color: white;
+	}
+
+	#bgpictureFromCamera {
+		width: 100%;
+		height: auto;
+		margin-top: 16px;
+	}
+
+	.btn {
+		display: block;
+		margin: auto;
+		position: absolute;
+		bottom: 5%;
+		left: 50%;
+		transform: translate(-50%, 50%);
+		display: inline-block;
+		width: 80%;
+		max-width: 600px;
+		height: 120px;
+		background: linear-gradient(to bottom right, #8e44ad, #2980b9);
+		color: white;
+		font-size: 55px;
+		font-weight: bold;
+		text-align: center;
+		line-height: 130px;
+		border-radius: 40px;
+		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+		box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+		cursor: pointer;
+	}
+
+	.btn:hover {
+		filter: brightness(0.9);
+	}
+
+	input[type="text"],
+	input[type="number"],
+	input[type="email"],
+	input[type="password"],
+	textarea {
+		font-size: 16px;
+		-webkit-text-size-adjust: 100%;
+	}
+
+	#ipbox {
+		border-radius: 20px;
+		padding: 10px;
+		font-size: 30px;
+		background-color: #899bbb;
+		margin: auto;
+		//position: absolute;
+		//top: 30px;
+		left: 50%;
+		//transform: translate(-50%, 50%);
+		display: none;
+		width: 80%;
+		max-width: 600px;
+		height: 80px;
+	}
+
+	#settings-btn {
+		font-size: 62px;
+		color: white;
+		cursor: pointer;
+		position: absolute;
+		top: 16px;
+		left: 16px;
+	}
+
+	#settings-btn-min {
+		font-size: 62px;
+		color: white;
+		cursor: pointer;
+		position: absolute;
+		top: 16px;
+		right: 16px;
+	}
+
+	#prev-button {
+		font-size: 82px;
+		color: #2980b9;
+		cursor: pointer;
+		position: absolute;
+		bottom: 55px;
+		left: 56px;
+	}
+
+	#next-button {
+		font-size: 82px;
+		color: #2980b9;
+		cursor: pointer;
+		position: absolute;
+		bottom: 55px;
+		right: 56px;
+	}
+	</style>
+</head>
+
+<body>
+	<div id="settings-btn" onclick="showhide()">&#9776;</div>
+	<div id="settings-btn-min" onclick="showhide_image()">&#9746;</div>
+	<div id="prev-button" onclick="toggle_button_type('left')">◀︎</div>
+	<div id="next-button" onclick="toggle_button_type('right')">▶︎</div>
+	<div id="menuholder" style="
+    position: absolute;
+    top: 10%x;
+    left: 50%;
+    transform: translate(-50%,10%);
+    display: none; 
+    width: 95%;
+    max-width: 600px;
+    height: 470px;
+    border-style: solid;
+    border-width: 15px;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #e7e7e7;
+"> Kindle Address <input type="textarea" id="ipbox" size="35" name="ipbox" value="http://192.168.15.221:5000/uploadthen" style="display: block;">
+		<div>
+			<label for="scan-qr">Scan QR:</label>
+			<button id="scan-qr" style="background-color: blue;
+border-radius: 20px;
+color: white;
+padding: 10px 20px;
+font-size: 20px;">Scan QR</button>
+		</div>
+		<div>
+			<label for="Remote home" style="color: black;">Remote config</label>
+			<button id="scan-qr" style="background-color: blue;
+		border-radius: 20px;
+		color: white;
+		padding: 10px 20px;
+		font-size: 20px;" onclick="open_kindle_conf()"> New tab</button>
+		</div>
+		<div>
+			<label for="horde-toggle" style="color: grey;">Horde / Automatic111:</label>
+			<input type="checkbox" id="horde-toggle" disabled checked>
+		</div>
+		<div>
+			<label for="num-images " style="color: grey;">Image count:</label>
+			<input type="number" id="num-images" value="1" disabled>
+		</div>
+		<div>
+			<label for="webp-toggle"> Webp bridge:</label>
+			<input type="checkbox" style="
+		
+	
+    width: 50px;
+    height: 50px;
+    border-radius: 15px; /* half the height */
+    background-color: grey;
+    cursor: pointer;
+}
+		
+		" id="webp-toggle">
+		</div>
+	</div>
+	</div>
+	</div>
+	<!-- The `label` is attached to the hidden file input -->
+	<label for="cameraFileInput">
+		<span id="camera_button" class="btn">Open camera</span>
+		<!-- The hidden file `input` for opening the native camera -->
+		<input id="cameraFileInput" type="file" accept="image/*" capture="environment" />
+	</label>
+	<input id="FileInput2" type="file" accept="image/*" style="display:none;" />
+	<!-- displays the picture uploaded from the native camera -->
+	<img id="pictureFromCamera" style="display:none;
+	    border-style: solid;
+    border-width: 15px;
+	" />
+	<div id="framenotfromcamera" style="display:none;
+	    border-style: solid;
+    border-width: 15px;
+	" />
+	</div>
+	<div id="frame_for_search" style="display:block;
+	    border-style: solid;
+    border-width: 15px;
+	" />
+	<input id="searchterm" type="text" placeholder="Search..." style="width: 90%; 
+        height: 80%; 
+        padding: 20px; 
+        border-radius: 20px; 
+        border: none; 
+        background-color: #fff; 
+        margin: auto; 
+        font-size: 1.3em; 
+	
+    ">
+	</div>
+	<span class="btn" id="speak_button" onclick="startRecording()">Speak</span>
+	<span class="btn" id="upload_button">Upload</span>
+	<span class="btn" id="search_button" onclick="searchtext()">Search text</span>
+</body>
+
+</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+document.getElementById("upload_button").addEventListener("click", function() {
+	document.getElementById("FileInput2").click();
+});
+//document.getElementById("FileInput").addEventListener("change", function () {
+//    document
+//      .getElementById("pictureFromCamera")
+//      .setAttribute("src", window.URL.createObjectURL(this.files[0]));
+//	  upload(cameraFileInput)
+//  });
+//
+document.getElementById("FileInput2").addEventListener("change", function() {
+	document.getElementById("framenotfromcamera").style.display = "none"
+	document.getElementById("pictureFromCamera").setAttribute("src", window.URL.createObjectURL(this.files[0]));
+	upload("FileInput2")
+});
+document.getElementById("cameraFileInput").addEventListener("change", function() {
+	document.getElementById("framenotfromcamera").style.display = "none"
+	document.getElementById("pictureFromCamera").setAttribute("src", window.URL.createObjectURL(this.files[0]));
+	upload("cameraFileInput")
+});
+
+function upload(divid) {
+	var fileInput = document.getElementById(divid);
+	var file = fileInput.files[0];
+	// create a canvas element and load the image file into it
+	var img = new Image();
+	img.onload = function() {
+		var canvas = document.createElement('canvas');
+		var ctx = canvas.getContext('2d');
+		var MAX_WIDTH = 600;
+		var MAX_HEIGHT = 800;
+		var width = img.width;
+		var height = img.height;
+		// calculate the new dimensions to maintain aspect ratio
+		if(width > height) {
+			if(width > MAX_WIDTH) {
+				height *= MAX_WIDTH / width;
+				width = MAX_WIDTH;
+			}
+		} else {
+			if(height > MAX_HEIGHT) {
+				width *= MAX_HEIGHT / height;
+				height = MAX_HEIGHT;
+			}
+		}
+		// set the canvas dimensions to the new dimensions
+		canvas.width = width;
+		canvas.height = height;
+		// draw the image onto the canvas and convert to grayscale
+		ctx.drawImage(img, 0, 0, width, height);
+		var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+		var data = imageData.data;
+		for(var i = 0; i < data.length; i += 4) {
+			var avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+			data[i] = avg;
+			data[i + 1] = avg;
+			data[i + 2] = avg;
+		}
+		ctx.putImageData(imageData, 0, 0);
+		// convert the canvas image to a Blob object and append to FormData
+		canvas.toBlob(function(blob) {
+			var formData = new FormData();
+			formData.append("image", blob, "image.jpg");
+			// send the form data using XMLHttpRequest
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", document.getElementById("ipbox").value);
+			xhr.onreadystatechange = function() {
+				if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+					console.log(xhr.responseText);
+				}
+			};
+			xhr.send(formData);
+		}, "image/jpeg");
+	};
+	img.src = window.URL.createObjectURL(file);
+	//document.getElementById("pictureFromCamera").style.border=" 15px solid black"
+	document.getElementById("pictureFromCamera").style.display = "block"
+}
+
+function showhide() {
+	console.log(document.getElementById("menuholder").style.display)
+	if(document.getElementById("menuholder").style.display == "block") {
+		document.getElementById("menuholder").style.display = "none"
+	} else {
+		document.getElementById("menuholder").style.display = "block"
+	}
+}
+
+function showhide_image() {
+	console.log(document.getElementById("pictureFromCamera").style.display)
+	if(document.getElementById("pictureFromCamera").style.display == "block") {
+		document.getElementById("pictureFromCamera").style.display = "none"
+		document.getElementById("framenotfromcamera").style.display = "none"
+	} else {
+		document.getElementById("pictureFromCamera").style.display = "block"
+	}
+}
+
+function ipbox_setup() {
+	// Get the input element
+	const ipBox = document.getElementById("ipbox");
+	// Set the default value from local storage or the initial value if not found
+	ipBox.value = localStorage.getItem("ipBoxValue") || "http://192.168.0.221:5000/uploadthen";
+	// Add an event listener to the input element to update local storage when the value changes
+	ipBox.addEventListener("input", function() {
+		localStorage.setItem("ipBoxValue", ipBox.value);
+	});
+}
+ipbox_setup()
+let current_context = "cam";
+let contexts = {
+	"cam": "camera_button",
+	"upload": "upload_button",
+	"voice": "speak_button",
+	"search": "search_button"
+};
+document.getElementById(contexts[current_context]).style.display = "block"
+
+function toggle_button_type(left_or_right) {
+	// Get the current index of the current_context in the keys array
+	const keys = Object.keys(contexts);
+	const currentIndex = keys.indexOf(current_context);
+	// Update the current_context based on the input
+	if(left_or_right === "left") {
+		if(current_context === "cam") {
+			current_context = "search";
+		} else {
+			current_context = keys[(currentIndex - 1 + keys.length) % keys.length];
+		}
+	} else if(left_or_right === "right") {
+		if(current_context === "search") {
+			current_context = "cam";
+		} else {
+			current_context = keys[(currentIndex + 1) % keys.length];
+		}
+	}
+	console.log(current_context);
+	refresh_buttons()
+}
+
+function refresh_buttons() {
+	document.getElementById("upload_button").style.display = "none"
+	document.getElementById("speak_button").style.display = "none"
+	document.getElementById("camera_button").style.display = "none"
+	document.getElementById("search_button").style.display = "none"
+	document.getElementById("frame_for_search").style.display = "none"
+	document.getElementById(contexts[current_context]).style.display = "block"
+	if(current_context == "search") {
+		document.getElementById("frame_for_search").style.display = "block"
+	}
+}
+refresh_buttons()
+
+function open_kindle_conf() {
+	//opening the kindle home page based on address
+	let addressInput = document.getElementById("ipbox");
+	let addressValue = addressInput.value;
+	let link = addressValue.replace("/uploadthen", "");
+	window.open(link, "_blank");
+}
+var recognition = new webkitSpeechRecognition(); // create new instance of speech recognition API
+var frame = document.getElementById("response-frame"); // get the response iframe
+var transcriptDiv = document.getElementById("pictureFromCamera"); // get the transcript div
+var framenotfromcamera = document.getElementById("framenotfromcamera"); // get the transcript div
+function startRecording() {
+	recognition.start(); // start recording when button is clicked
+	//document.getElementById("microphone-btn").innerHTML = "Recording..."; // change button text to "Recording"
+}
+recognition.onresult = function(event) { // when recognition is complete, handle the result
+	let addressInput = document.getElementById("ipbox");
+	let addressValue = addressInput.value;
+	let link = addressValue.replace("/uploadthen", "");
+	var transcript = event.results[0][0].transcript;
+	console.log("You said: " + transcript)
+	//let thelink=link+"/do_html_fusion/" + encodeURIComponent(transcript)
+	transcriptDiv.style.display = "none"
+	framenotfromcamera.style.display = "block"
+	framenotfromcamera.innerHTML = "You said: " + transcript
+	loadAndDisplayImage(transcript)
+	//transcriptDiv.innerHTML = `<BR><iframe id='response-frame' src=`+thelink+`		></iframe>`; // display transcript in div
+	//document.getElementById("response-frame").src = link+"/do_html_fusion/" + encodeURIComponent(transcript); // send transcript to server and load response in iframe
+	//document.getElementById("microphone-btn").innerHTML = "Start Recording"; // reset button text
+};
+//recognition.onend = function() { // when recording is finished, reset button text
+//	document.getElementById("microphone-btn").innerHTML = "Start Recording";
+//};
+function searchtext() {
+	let text_to_search = document.getElementById("searchterm").value
+	loadAndDisplayImage(text_to_search)
+	//console.log("searching: "+text_to_search)
+	//		var frame = document.getElementById("response-frame"); // get the response iframe
+	//	var transcriptDiv = document.getElementById("pictureFromCamera"); // get the transcript div
+	//	var framenotfromcamera = document.getElementById("framenotfromcamera"); // get the transcript div
+	//
+	//					  let addressInput = document.getElementById("ipbox");
+	//		  let addressValue = addressInput.value;
+	//		  let link = addressValue.replace("/uploadthen", "");
+	//
+	//	let thelink=link+"/do_html_fusion/" +  encodeURIComponent(text_to_search)
+	//		
+	//		//transcriptDiv.style.display="none"
+	//		//framenotfromcamera.style.display="block"
+	//		//framenotfromcamera.innerHTML = "You said: " + transcript
+	//		//
+	//		transcriptDiv.innerHTML = `<BR><iframe id='response-frame' src=`+thelink+`		></iframe>`; // display transcript in div
+	//		
+	//		
+	//		
+	//		
+	//		//document.getElementById("response-frame").src = link+"/do_html_fusion/" + encodeURIComponent(transcript); // send transcript to server and load response in iframe
+	//		//document.getElementById("microphone-btn").innerHTML = "Start Recording"; // reset button text
+};
+
+function loadAndDisplayImage(transcript) {
+	let addressInput = document.getElementById("ipbox");
+	let addressValue = addressInput.value;
+	let link = addressValue.replace("/uploadthen", "");
+	let thelink = link + "/do_html_fusion_js/" + encodeURIComponent(transcript)
+	console.log("attempting")
+	$.ajax({
+		url: thelink,
+		method: "GET",
+		success: function(response) {
+			var webpImg = new Image();
+			webpImg.src = "data:image/webp;base64," + response;
+			webpImg.alt = "WebP image";
+			document.getElementById("pictureFromCamera").setAttribute("src", "data:image/webp;base64," + response)
+			//document.body.appendChild(webpImg);
+			var jpgImg = new Image();
+			jpgImg.src = "data:image/jpeg;base64," + response;
+			jpgImg.alt = "JPEG image";
+			jpgImg.onload = function() {
+				var canvas = document.createElement('canvas');
+				canvas.width = jpgImg.width;
+				canvas.height = jpgImg.height;
+				var ctx = canvas.getContext('2d');
+				ctx.drawImage(jpgImg, 0, 0);
+				var formData = new FormData();
+				formData.append('image', dataURItoBlob(canvas.toDataURL('image/jpeg')), 'image.jpg');
+				var xhr = new XMLHttpRequest();
+				xhr.open('POST', addressValue);
+				xhr.onload = function() {
+					if(xhr.status === 200) {
+						console.log('Image uploaded successfully!');
+					} else {
+						console.log('An error occurred while uploading the image.');
+					}
+				};
+				xhr.send(formData);
+			}
+		}
+	});
+}
+
+function convertToJpeg(base64Data) {
+	// create a canvas element
+	var canvas = document.createElement('canvas');
+	var ctx = canvas.getContext('2d');
+	// create an image element and set its source to the base64 data
+	var img = new Image();
+	img.src = "data:image/webp;base64," + base64Data;
+	// set the canvas size to match the image size
+	canvas.width = img.width;
+	canvas.height = img.height;
+	// draw the image on the canvas
+	ctx.drawImage(img, 0, 0);
+	// return the JPEG-encoded data
+	return canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpeg);base64,/, "");
+}
+
+function dataURItoBlob(dataURI) {
+	// Split the data URI into its components
+	var components = dataURI.split(',');
+	var mimeType = components[0].split(':')[1];
+	var byteString = atob(components[1]);
+	// Create a Uint8Array from the byte string
+	var array = new Uint8Array(byteString.length);
+	for(var i = 0; i < byteString.length; i++) {
+		array[i] = byteString.charCodeAt(i);
+	}
+	// Create a Blob from the Uint8Array and return it
+	return new Blob([array], {
+		type: mimeType
+	});
+}
+</script>
