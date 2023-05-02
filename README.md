@@ -1,9 +1,9 @@
 # Kindlefusion 
 
 Version 17 (02/05/2023)
-Tested on kindle 3 & kindle 4
+Tested on kindle 3 & kindle 4. I am currently in the process of updating the videos and imnages to match the latest version. 
 
-This initially started as a project to allow highlighting of text within a kindle e-book to generate an image based on the text. This has since feature-crept and moved to acting as a picture frame that can receive images created via Stable Diffusion. The old version folder has the initial readme and code if you want to do the highlighting thing, but that has been depreciated now due to a change in focus.
+This initially started as a project to allow highlighting of text within a kindle e-book to generate an image based on the text. This has since feature-crept and moved to acting as a picture frame that can receive images created via Stable Diffusion. The old version folder (https://github.com/diggedypomme/Kindlefusion/tree/main/Old%20version) has the initial readme and code if you want to do the highlighting thing, but that has been depreciated now due to a change in focus.
 
 <div style="border: 1px solid black; padding: 5px; display: inline-block;">
   <img src="/documentation/1682950016238.jpeg" alt="Camera Preview" style="max-width: 50%; height: auto;">
