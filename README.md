@@ -3,12 +3,12 @@
 Version 17 (02/05/2023)
 Tested on kindle 3 & kindle 4
 
-This initially started as a project to allow highlighting of text within a kindle e-book to generate an image based on the text. This has since feature-crept and moved to acting as a picture frame that can receive images created via Stable Diffusion. The old version folder has the initial readme and code if you want to do the highlighting thing, but it wasn't of much interest to people.
+This initially started as a project to allow highlighting of text within a kindle e-book to generate an image based on the text. This has since feature-crept and moved to acting as a picture frame that can receive images created via Stable Diffusion. The old version folder has the initial readme and code if you want to do the highlighting thing, but that has been depreciated now due to a change in focus.
 
 <div style="border: 1px solid black; padding: 5px; display: inline-block;">
   <img src="/documentation/1682950016238.jpeg" alt="Camera Preview" style="max-width: 50%; height: auto;">
 </div>
-
+<BR>
 
 Kindlefusion creates a html front end that can be used to upload images or get these from Stable Horde (https://stablehorde.net) / Automatic1111. A separate script can run on your pc monitoring the output folder of Automatic1111 and sending each image through to the Kindle. If using the mobile page then requesting an image via voice can also be used.
 
