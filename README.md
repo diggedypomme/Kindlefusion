@@ -37,33 +37,39 @@ My concerns are
 - This does not use any power saving mode (sleeping inbetween image updates). I don't think I can have flask running at the same time if I do this, but again - open to suggestions
 
 
-Note that this version is set up to use Stablehorde, but I previously made it for use with local Automatic1111 and can look at merging that code if it is of interest
-
-Please note that this could be simplified with an updated version of pillow, ffmpeg, imagemagick, or with the library webp, but I have struggled getting cross compilation working, and would appreciate advice for that. Currently it has a separate api endpoint whos sole purpose is to take in a heic webp in the form of a png and return it as a png/jpg. I am using jpg currently.
+The front end now has a selection dropdown for the use of Stable Horde or Automatic1111. Stable Horde defaults to using JS to convert from webp as I cannot get webp compiled for the kindle. A dropdown menu exists for the old method of using a separate api endpoint whos sole purpose is to take in a heic webp in the form of a png and return it as a png/jpg. Please note that this could be simplified with an updated version of pillow, ffmpeg, imagemagick, or with the library webp, but this is not currently an option due to my issues with cross compilation.
 
 ## Installation
 
 To install this project, follow these steps:
 
-1. Install the required libraries that I haven't got round to listing yet
-2. Move the files in the "add_to_kindle" folder onto a kindle
-3. Add your stable horde key from https://stablehorde.net/register to secret_config.json. Without this you will be lower priority so the image generation will take longer.
-4. If you want to use the camera from a mobile, then copy the camera folder to it. I had to put it into the download folder for opera at file:///sdcard/Android/data/com.opera.browser/files/Download/cam/caaam5.html . This is not necessary and is just feature creep, but cool to see the images being sent to the kindle.
+1. Root the kindle and install KUAL, USBnetworking, and python3 (see https://www.mobileread.com/forums/showthread.php?t=225030)
+1. Install pip: "python3 -m ensurepip --upgrade"
+2. Install flask: "/mnt/us/python3/bin/pip3 install flask"
+2. Install loguru: "/mnt/us/python3/bin/pip3 install loguru"
+2. Install flask CORS: "/mnt/us/python3/bin/pip3 install flask_cors"
+2. make sure the clippings file exists: "touch  '/mnt/us/documents/My Clippings.txt'"
+2. Move the files in the "add_to_kindle" folder onto a kindle. If you are doing this via usb, the files go into the root folder. Over ssh it would be in mnt/us/ , so mnt/us/kindlefusion  etc. This will add kindlefusion itself, as well as a launcher for KUAL.
+3. Add your stable horde key from https://stablehorde.net/register to secret_config.json (in the kindlefusion folder). Without this it will work, but will be lower priority so the image generation will take longer. A name for the kindle (which shows on boot) can also be added.
+4. If you want to use the camera from a mobile, then copy caaam9.html and camera.png to it. I had to put it into the download folder for opera at file:///sdcard/Android/data/com.opera.browser/files/Download/cam/caaam9.html. This is not necessary if you don't want to use the mobile page, and actually most of the core functionality can be used without this, however it does add the ability to use voice to request the images (the browser voice request either needs ssl running on the flask app, or needs to be local to the device, hence this separate file)
 
 
 
 ## How to Run
 
-To run this project, follow these steps:
+To run the project, you can either do this via ssh, or via the KUAL menu. The KUAL menu would be the best way, but I will include the steps for running over SSH too:
 
-1. Make sure you're in the project directory.
+Via KUAL:
+1. Select "open 5000". This will open the port over wifi, as well as running "mntroot rw" to make the kindle file structure writeable.
+2. Select "Start Kindlefusion"
+3. Visit the kindles address which is listed at the top right of the flash screen (for example 192.168.0.10:5000 )
+
+Over SSH:
+1. Make sure you're in the project directory ("/mnt/us/kindlefusion")
 2. Open port 5000 if you want to access the helper page via wifi. This is done with the command "iptables -A INPUT -p tcp --dport 5000 -i wlan0 -j ACCEPT"
-3. Run "python3 stable11.py"
-5. Now either heighlight some text and when you click finish, it will send that off to stable diffusion and bring back an image for you. In my experience this is between around 5 seconds and around 30 seconds, however the API must be running on the remote server due to the webp file. This is not currently running but you can run your own. I need to get some feedback as to whether it is secure enough for hosting on the net. In the longrun I would like to replace this with using a compiled webp binary on the kindle itself.
-4. To clear the image just click to change the page. Note that all generated pics are saved to the /gallery/images folder. 
-5. For additional functionality (or to see / load previous images) , open your web browser and navigate to `http://your_kindle_ip:5000`.
+3. Run "python3 stable17.py"
+4. Visit the kindles address which is listed at the top right of the flash screen (for example 192.168.0.10:5000 )
 
-Note that this will spam up your highlights, so you might want to back that up if you don't want to have to clear it out afterwards
 
 ## Previews
 
