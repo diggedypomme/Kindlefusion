@@ -12,7 +12,6 @@ This initially started as a project to allow highlighting of text within a kindl
 
 Kindlefusion creates a html front end that can be used to upload images or get these from Stable Horde (https://stablehorde.net) / Automatic1111. A separate script can run on your pc monitoring the output folder of Automatic1111 and sending each image through to the Kindle. If using the mobile page then requesting an image via voice can also be used.
 
-While I have still been unable to compile webp to allow conversion of the heic webp files that return from Stable Horde, this is now done in JS on the front end. It would be nice to have the kindle doing this natively, but this is the best method that I have found so far.
 
 Youtube explanation video for the old version:
 <BR>
@@ -37,7 +36,9 @@ My concerns are
 - This does not use any power saving mode (sleeping inbetween image updates). I don't think I can have flask running at the same time if I do this, but again - open to suggestions
 
 
-The front end now has a selection dropdown for the use of Stable Horde or Automatic1111. Stable Horde defaults to using JS to convert from webp as I cannot get webp compiled for the kindle. A dropdown menu exists for the old method of using a separate api endpoint whos sole purpose is to take in a heic webp in the form of a png and return it as a png/jpg. Please note that this could be simplified with an updated version of pillow, ffmpeg, imagemagick, or with the library webp, but this is not currently an option due to my issues with cross compilation.
+The front end now has a selection dropdown for the use of Stable Horde or Automatic1111. 
+
+Stable Horde defaults to using JS to convert from webp as I cannot get webp compiled for the kindle. A dropdown menu exists for the old method of using a separate api endpoint whos sole purpose is to take in a heic webp in the form of a png and return it as a png/jpg. Please note that this could be simplified with an updated version of pillow, ffmpeg, imagemagick, or with the library webp, but this is not currently an option due to my issues with cross compilation.
 
 ## Installation
 
