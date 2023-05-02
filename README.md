@@ -14,7 +14,7 @@ Kindlefusion creates a html front end that can be used to upload images or get t
 
 While I have still been unable to compile webp to allow conversion of the heic webp files that return from Stable Horde, this is now done in JS on the front end. It would be nice to have the kindle doing this natively, but this is the best method that I have found so far.
 
-Youtube explanation video:
+Youtube explanation video for the old version:
 <BR>
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/SueGVpyrgG8/0.jpg)](https://www.youtube.com/watch?v=SueGVpyrgG8)
 
@@ -32,9 +32,9 @@ A personal project but it might be of interest to others too.
 
 **Disclaimer: This project is a work in progress and may contain bugs or incomplete features.
 My concerns are 
--the risk potentially filling up a kindle with images. Very open to suggestions or advice with this**
--it is running with a CORS override. Not sure how big of an issue this is - definitely don't open it to the net
--This does not use any power saving mode (sleeping inbetween image updates). I don't think I can have flask running at the same 
+- The risk potentially filling up a kindle with images. Shouldn't happen as there is a lot of space on the kindes, but I am not currently checking for this. Very open to suggestions or advice with this**
+- It is running with a CORS override. Not sure how big of an issue this is - definitely don't open it to the net
+- This does not use any power saving mode (sleeping inbetween image updates). I don't think I can have flask running at the same time if I do this, but again - open to suggestions
 
 
 Note that this version is set up to use Stablehorde, but I previously made it for use with local Automatic1111 and can look at merging that code if it is of interest
