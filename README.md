@@ -45,14 +45,17 @@ Stable Horde defaults to using JS to convert from webp as I cannot get webp comp
 To install this project, follow these steps:
 
 1. Root the kindle and install KUAL, USBnetworking, and python3 (see https://www.mobileread.com/forums/showthread.php?t=225030)
-1. Install pip: "python3 -m ensurepip --upgrade"
-2. Install flask: "/mnt/us/python3/bin/pip3 install flask"
-2. Install loguru: "/mnt/us/python3/bin/pip3 install loguru"
-2. Install flask CORS: "/mnt/us/python3/bin/pip3 install flask_cors"
-2. make sure the clippings file exists: "touch  '/mnt/us/documents/My Clippings.txt'"
 2. Move the files in the "add_to_kindle" folder onto a kindle. If you are doing this via usb, the files go into the root folder. Over ssh it would be in mnt/us/ , so mnt/us/kindlefusion  etc. This will add kindlefusion itself, as well as a launcher for KUAL.
-3. Add your stable horde key from https://stablehorde.net/register to secret_config.json (in the kindlefusion folder). Without this it will work, but will be lower priority so the image generation will take longer. A name for the kindle (which shows on boot) can also be added.
-4. If you want to use the camera from a mobile, then copy caaam9.html and camera.png to it. I had to put it into the download folder for opera at file:///sdcard/Android/data/com.opera.browser/files/Download/cam/caaam9.html. This is not necessary if you don't want to use the mobile page, and actually most of the core functionality can be used without this, however it does add the ability to use voice to request the images (the browser voice request either needs ssl running on the flask app, or needs to be local to the device, hence this separate file)
+3. Select "install libraries" from the kindlefusion menu in Kual. If this works, you can skip to step 4. If you have any issues getting this to run then issue the following commands over ssh:
+
+3b. Install pip: "python3 -m ensurepip --upgrade"
+3c. Install flask: "/mnt/us/python3/bin/pip3 install flask"
+3d. Install loguru: "/mnt/us/python3/bin/pip3 install loguru"
+3e. Install flask CORS: "/mnt/us/python3/bin/pip3 install flask_cors"
+3f. make sure the clippings file exists: "touch  '/mnt/us/documents/My Clippings.txt'"
+
+4. Add your stable horde key from https://stablehorde.net/register to secret_config.json (in the kindlefusion folder). Without this it will work, but will be lower priority so the image generation will take longer. A name for the kindle (which shows on boot) can also be added. This can also be added via the web ui but will need kindlefusion to be restarted
+5. If you want to use the camera from a mobile, then copy caaam9.html and camera.png to it. I had to put it into the download folder for opera at file:///sdcard/Android/data/com.opera.browser/files/Download/cam/caaam9.html. This is not necessary if you don't want to use the mobile page, and actually most of the core functionality can be used without this, however it does add the ability to use voice to request the images (the browser voice request either needs ssl running on the flask app, or needs to be local to the device, hence this separate file)
 
 
 
