@@ -1,5 +1,7 @@
 eips -c
 
+touch  '/mnt/us/documents/My Clippings.txt'
+
 eips 14 5 "Installing libraries"
 
 eips 10 12 "Instaling PIP"
