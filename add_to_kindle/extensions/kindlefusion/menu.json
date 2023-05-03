@@ -42,7 +42,38 @@
 			"refresh": false,
 			"status": false,
 			"internal": "open port 5000 and make writeable"
+		},
+		{
+			"name": "* install libraries *",
+			"action": "./bin/libraries.sh",
+			"params": "install_libraries",
+			"exitmenu": false,
+			"checked": true,
+			"refresh": false,
+			"status": false,
+			"internal": "install libraries"
+		},
+		{
+			"name": "* Disable Screensavers *",
+			"action": "./bin/ssprevent.sh",
+			"params": "disable_screensavers",
+			"exitmenu": false,
+			"checked": true,
+			"refresh": false,
+			"status": false,
+			"internal": "Disable Screensavers"
+		},
+		{
+			"name": "* Enable Screensavers *",
+			"action": "./bin/ssallow.sh",
+			"params": "enable_screensavers",
+			"exitmenu": false,
+			"checked": true,
+			"refresh": false,
+			"status": false,
+			"internal": "Re-enable screensavers"
 		}
+		
 		]
 	}
 	]
