@@ -1,6 +1,16 @@
-Steps for setting up the environment:
+# Steps for setting up the environment:
 
-This uses the files from https://www.mobileread.com/forums/showthread.php?t=352505
+This guide explains how to set up a development environment for a Kindle 4. The process involves installing jailbreak, enabling SSH, and configuring USB networking.
+
+## Prerequisites
+- A Kindle 4 device
+- A computer with SSH and SCP installed
+- Internet connection
+
+## Installation Steps
+
+### Jailbreak Installation
+1. Download the required files from https://www.mobileread.com/forums/showthread.php?t=352505
 
 k4:
 Step 1:
