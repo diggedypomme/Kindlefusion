@@ -44,7 +44,7 @@ Stable Horde defaults to using JS to convert from webp as I cannot get webp comp
 
 To install this project, follow these steps:
 
-1. Root the kindle and install KUAL, USBnetworking, and python3 (see https://www.mobileread.com/forums/showthread.php?t=225030)
+1. Root the kindle and install KUAL, USBnetworking, and python3 (see https://www.mobileread.com/forums/showthread.php?t=225030). I now have a guide ("set_up_environment.txt") in the documents folder. 
 2. Move the files in the "add_to_kindle" folder onto a kindle. If you are doing this via usb, the files go into the root folder. Over ssh it would be in mnt/us/ , so mnt/us/kindlefusion  etc. This will add kindlefusion itself, as well as a launcher for KUAL.
 3. Select "install libraries" from the kindlefusion menu in Kual. If this works, you can skip to step 4. If you have any issues getting this to run then issue the following commands over ssh:
 
