@@ -1,16 +1,6 @@
-# Steps for setting up the environment:
+Steps for setting up the environment:
 
-This guide explains how to set up a development environment for a Kindle 4. The process involves installing jailbreak, enabling SSH, and configuring USB networking.
-
-## Prerequisites
-- A Kindle 4 device
-- A computer with SSH and SCP installed
-- Internet connection
-
-## Installation Steps
-
-### Jailbreak Installation
-1. Download the required files from https://www.mobileread.com/forums/showthread.php?t=352505
+This uses the files from https://www.mobileread.com/forums/showthread.php?t=352505
 
 k4:
 Step 1:
@@ -51,7 +41,7 @@ I then connect it to wifi and i check which ip it is on by running "python -m ht
 Serving HTTP on :: port 8000 (http://[::]:8000/) ...
 ::ffff:192.168.0.200 - - [04/May/2023 02:03:51] "GET / HTTP/1.1" 200 -
           ^ the kindle's ip
-          
+
 I can then ssh to the kindle.
 The password is "root" with the root password. You are going to need to find this online via your serial number. 
 
