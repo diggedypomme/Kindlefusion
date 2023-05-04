@@ -1,0 +1,48 @@
+Steps for setting up the environment:
+
+This uses the files from https://www.mobileread.com/forums/showthread.php?t=352505
+
+k4:
+Step 1:
+-Install jailbreak by copying these files to the root of the kindle user storage (over ssh this would be /mnt/us)
+data.tar.gz
+diagnostic_logs
+ENABLE_DIAGS
+-go to settings and then restart
+
+Step 2: 
+-put the usbnetwork binary into the kindle root folder:
+Update_usbnetwork_0.57.N_k4_install.bin
+-go to "settings" -> "install update"
+
+Step 3:
+-copy the kual file to the documents folder. I forget which it is but I copy both and then delete the one that doesnt work:
+KUAL-KDK-1.0.azw2
+KUAL-KDK-2.0.azw2
+
+-copy the MKK file to the root folder (for me it is Update_mkk-20141129-k4-ALL_install.bin)
+-copy helper extension (/extensions)
+-copy the MRinstaller to /extensions , and the mrpackages folder to the root of the kindle
+-copy the usbnetworking folder to the mrpackages folder
+
+step 4:
+-run Kual from the main page, go to page 2 of helper and tell it to install mrpackage
+
+step 5:
+-copy python 3 (Update_python3_0.14.N_k4_install.bin) to mrinstaller and install this in the same way
+
+step 6:
+-prevent OTA updates from helper+
+-from usbnetworking, enable ssh on boot, toggle network.
+
+-----------
+
+I then connect it to wifi and i check which ip it is on by running "python -m http.server" and then connecting to it from the experimental browser, for example@
+Serving HTTP on :: port 8000 (http://[::]:8000/) ...
+::ffff:192.168.0.200 - - [04/May/2023 02:03:51] "GET / HTTP/1.1" 200 -
+          ^ the kindle's ip
+          
+I can then ssh to the kindle.
+The password is "root" with the root password. You are going to need to find this online via your serial number. 
+
+Please note that in the events where this login does not work, I connected via usb networking (you'll need to read up on getting the network adapter installed) and then instead of sshing to it I telnet to it, and then use passwd to change the password to something I can remember. DO NOT LOSE THIS PASSWORD. DO NOT LOSE THIS PASSWORD. WRITE IT DOWN. DO NOT LOSE THIS PASSWORD. I can then ssh or scp to it. 
