@@ -5,3 +5,5 @@
 -proper option for the highlighter
 -stop reading clippings on boot
 
+-for the ssl version, you need to look at opening another port.
+-put caaaam on my server so you can use the voice rec, or get it running in ssl mode
