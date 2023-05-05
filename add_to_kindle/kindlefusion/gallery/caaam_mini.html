@@ -136,7 +136,7 @@
 
 	#ipbox {
 		border-radius: 20px;
-		padding: 10px;
+		//padding: 10px;
 		font-size: 30px;
 		background-color: #899bbb;
 		margin: auto;
@@ -150,6 +150,21 @@
 		height: 80px;
 	}
 
+	#automaticbox {
+		border-radius: 20px;
+		//padding: 10px;
+		font-size: 30px;
+		background-color: #899bbb;
+		margin: auto;
+		//position: absolute;
+		//top: 30px;
+		left: 50%;
+		//transform: translate(-50%, 50%);
+		display: none;
+		width: 80%;
+		max-width: 600px;
+		height: 80px;
+	}
 	#settings-btn {
 		font-size: 62px;
 		color: white;
@@ -210,8 +225,26 @@
     font-weight: bold;
     text-align: center;
     background-color: #e7e7e7;
-"> Kindle Address <input type="textarea" id="ipbox" size="35" name="ipbox" value="/uploadthen" style="display: block;">
+"> 
+
+
+
+
+Kindle Address <input type="textarea" id="ipbox" size="35" name="ipbox" value="/uploadthen" style="display: block;">
+
+<HR>
 		<div>
+			
+		
+			<label for="automatic-toggle" >Automatic111:</label>
+			<input type="checkbox" id="useautomatic"  >
+		</div>
+	
+		
+		<input type="textarea" id="automaticbox" size="35" name="automaticbox" value="192.168.0.2" style="display: block;">
+		
+		<HR>
+				<div>
 			<label for="Remote home" style="color: black;">Remote config</label>
 			<button id="scan-qr" style="background-color: blue;
 		border-radius: 20px;
@@ -219,14 +252,8 @@
 		padding: 10px 20px;
 		font-size: 20px;" onclick="open_kindle_conf()"> New tab</button>
 		</div>
-		<div>
-			<label for="horde-toggle" style="color: grey;">Horde / Automatic111:</label>
-			<input type="checkbox" id="horde-toggle" disabled checked>
-		</div>
-		<div>
-			<label for="num-images " style="color: grey;">Image count:</label>
-			<input type="number" id="num-images" value="1" disabled>
-		</div>
+		
+		
 	</div>
 	</div>
 	</div>
@@ -265,6 +292,7 @@
 	<span class="btn" id="speak_button" onclick="startRecording()">Speak</span>
 	<span class="btn" id="upload_button">Upload</span>
 	<span class="btn" id="search_button" onclick="searchtext()">Search text</span>
+	<iframe name="myFrame" id="myFrame"  height="50px" style="display:none"src=""></iframe>
 </body>
 
 </html>
@@ -375,10 +403,49 @@ function ipbox_setup() {
 	ipBox.value = localStorage.getItem("ipBoxValue") || "/uploadthen";
 	// Add an event listener to the input element to update local storage when the value changes
 	ipBox.addEventListener("input", function() {
+		console.log("change ipBox")
 		localStorage.setItem("ipBoxValue", ipBox.value);
 	});
 }
 ipbox_setup()
+
+
+function automaticbox_setup() {
+	// Get the input element
+	const automaticbox = document.getElementById("automaticbox");
+	// Set the default value from local storage or the initial value if not found
+	automaticbox.value = localStorage.getItem("automaticbox") || "192.168.0.2";
+	// Add an event listener to the input element to update local storage when the value changes
+	automaticbox.addEventListener("input", function() {
+	    console.log("change automaticbox")
+		localStorage.setItem("automaticboxValue", automaticbox.value);
+	});
+}
+automaticbox_setup()
+
+function useautomatic_setup() {
+  console.log("automaticbox_setup()");
+  
+  // Get the input element
+  let useautomatic = document.getElementById("useautomatic");
+  
+  // Set the default value from local storage or the initial value if not found
+  useautomatic.checked = localStorage.getItem("useautomatic") === "true";
+  
+  // Add an event listener to the input element to update local storage when the value changes
+  useautomatic.addEventListener("change", function() {
+    console.log("change useautomatic");
+    localStorage.setItem("useautomatic", useautomatic.checked);
+  });
+  
+  console.log(useautomatic.checked);
+}
+
+useautomatic_setup();
+
+
+
+
 let current_context = "cam";
 //let contexts = { "cam": "camera_button", "upload": "upload_button", "voice": "speak_button" , "search": "search_button" };
 let contexts = {
@@ -451,7 +518,24 @@ recognition.onresult = function(event) { // when recognition is complete, handle
 
 function searchtext() {
 	let text_to_search = document.getElementById("searchterm").value
-	loadAndDisplayImage(text_to_search)
+	
+	
+	
+	if ( document.getElementById("useautomatic").value==false )
+	{
+	
+	    loadAndDisplayImage(text_to_search)
+	}
+	else 
+	{
+	    let searchterm_box = document.getElementById("searchterm").value
+	    let automaticbox_box = document.getElementById("automaticbox").value
+	    let url = "/text/"+automaticbox_box+"/"+searchterm_box;
+        //frame.src = url;
+		document.getElementById("myFrame").src=url
+	}
+	
+	
 };
 
 function loadAndDisplayImage(transcript) {
