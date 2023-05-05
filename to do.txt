@@ -1,0 +1,7 @@
+-need to make sure the apis are working or remove them from the dropdown
+-updater
+-need caaam mini and caaam have the option for automatic1111
+-a quick downloader bridge that can do the voice search (so like caaam but for desktop). dynamically set the ip to go to
+-proper option for the highlighter
+-stop reading clippings on boot
+

@@ -151,7 +151,7 @@ select {
   border-radius: 4px;
   border: 1px solid #ccc;
   margin-right: 10px;
-  width: 200px;
+  width: 300px;
 }
 
 button {
@@ -175,7 +175,7 @@ button:hover {
  </style>
   </head>
   <body>
-    <h1>Kindlefusion ¹⁶</h1>
+    <h1>Kindlefusion <sup>17</sup></h1>
     <iframe name="myFrame" id="myFrame"  height="50px" src=""></iframe>
     <label for="myInput">Enter text to search:</label>
     <textarea id="myInput"></textarea>
@@ -277,13 +277,17 @@ button:hover {
 <input style="    width: 200px;" id="nameinput" value="{{ loaded_kindlename }}"></input>
 <button onclick="changename()">Change kindle name</button>
 </div>
-<BR>
 
+<BR>
 <div class="button-group">
 <button onclick=" window.location.href = 'caaam';">Visit Caaaam Mini</button>
 </div>
-<BR><BR>
+<BR>
 
+<button onclick=" document.getElementById('myFrame').src = 'home';">Show entry screen</button>
+</div>
+<BR>
+<BR>
 
     <img id="pictureFromCamera" style="display:none;
 	    border-style: solid;
@@ -365,7 +369,7 @@ function updateOptions() {
       data.forEach(option => {
         const optionElement = document.createElement('option');
         optionElement.value = option.id;
-        optionElement.text = `${option.id} | ${option.origin} | ${option.search_term}`;
+        optionElement.text = `${option.search_term} | ${option.origin} | ${option.id} `;
         select.appendChild(optionElement);
       });
     });
@@ -380,37 +384,46 @@ function loadOptions() {
 }
 
 updateOptions()
-
-
 function showGallery() {
   const select = document.getElementById('mySelect');
   const dropdownLength = select.length;
 
   const galleryContent = document.createElement('div');
-
-const closeButton2 = document.createElement('button');
-closeButton2.textContent = 'Close';
-closeButton2.addEventListener('click', closeGallery);
-
-galleryContent.appendChild(closeButton2);
-
-
-
   galleryContent.classList.add('popup-content');
 
-
+  const closeButton = document.createElement('button');
+  closeButton.textContent = 'Close Gallery';
+  closeButton.style = 'position:fixed;right:150px';
+  closeButton.addEventListener('click', closeGallery);
+  galleryContent.appendChild(closeButton);
 
   for (let i = 0; i < dropdownLength; i++) {
     const thumbnailContainer = document.createElement('div');
     thumbnailContainer.classList.add('thumbnail-container');
-thumbnailContainer.classList.add('thumbnail-container');
-thumbnailContainer.style.display = 'flex';
-thumbnailContainer.style.alignItems = 'center';
-thumbnailContainer.style.justifyContent = 'center';
+    thumbnailContainer.style.display = 'flex';
+    thumbnailContainer.style.alignItems = 'center';
+    thumbnailContainer.style.justifyContent = 'center';
 
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'x';
+    removeButton.style.fontSize = '20px';
+    removeButton.style.color = 'red';
+    removeButton.onclick = () => {
+      const id = select.options[i].value;
+      const url = `remove_id/${id}`;
+      document.getElementById('myFrame').src = url;
+	  setTimeout(function(){
+		updateOptions()
+		
+		  setTimeout(function(){
+			showGallery()
+			}, 500); 
 
-
-
+		
+		}, 500); 
+	  
+	 
+    };
 
     const thumbnail = document.createElement('img');
     thumbnail.src = `static/images/${select.options[i].value}.jpg`;
@@ -424,18 +437,19 @@ thumbnailContainer.style.justifyContent = 'center';
     thumbnailLabel.textContent = select.options[i].text;
     thumbnailLabel.style.marginRight = "10px";
 
-    const button = document.createElement('button');
-    button.textContent = 'Set';
-    button.style.fontSize = "20px";
-    button.onclick = () => {
+    const setButton = document.createElement('button');
+    setButton.textContent = 'Set';
+    setButton.style.fontSize = "20px";
+    setButton.onclick = () => {
       const id = select.options[i].value;
       const url = `open_id/${id}`;
       document.getElementById('myFrame').src = url;
     };
 
+    thumbnailContainer.appendChild(removeButton);
     thumbnailContainer.appendChild(thumbnail);
     thumbnailContainer.appendChild(thumbnailLabel);
-    thumbnailContainer.appendChild(button);
+    thumbnailContainer.appendChild(setButton);
 
     galleryContent.appendChild(thumbnailContainer);
   }
@@ -444,21 +458,13 @@ thumbnailContainer.style.justifyContent = 'center';
   galleryPopup.innerHTML = '';
   galleryPopup.appendChild(galleryContent);
   galleryPopup.style.display = 'block';
-
-const closeButton = document.createElement('button');
-closeButton.textContent = 'Close';
-closeButton.addEventListener('click', closeGallery);
-
-galleryContent.appendChild(closeButton);
-
-
 }
 
+function closeGallery() {
+  const galleryPopup = document.getElementById('galleryPopup');
+  galleryPopup.style.display = 'none';
+}
 
-  function closeGallery() {
-    const galleryPopup = document.getElementById('galleryPopup');
-    galleryPopup.style.display = 'none';
-  }
 
 
 //-----settings for StableDiffusion-------//
@@ -700,29 +706,6 @@ function upload(divid) {
 	 let text_to_search=document.getElementById("myInput").value
 	 loadAndDisplayImage(text_to_search)
 	 
-	 
-	//console.log("searching: "+text_to_search)
-	//		var frame = document.getElementById("response-frame"); // get the response iframe
-	//	var transcriptDiv = document.getElementById("pictureFromCamera"); // get the transcript div
-	//	var framenotfromcamera = document.getElementById("framenotfromcamera"); // get the transcript div
-	//
-	//					  let addressInput = document.getElementById("ipbox");
-	//		  let addressValue = addressInput.value;
-	//		  let link = addressValue.replace("/uploadthen", "");
-	//
-	//	let thelink=link+"/do_html_fusion/" +  encodeURIComponent(text_to_search)
-	//		
-	//		//transcriptDiv.style.display="none"
-	//		//framenotfromcamera.style.display="block"
-	//		//framenotfromcamera.innerHTML = "You said: " + transcript
-	//		//
-	//		transcriptDiv.innerHTML = `<BR><iframe id='response-frame' src=`+thelink+`		></iframe>`; // display transcript in div
-	//		
-	//		
-	//		
-	//		
-	//		//document.getElementById("response-frame").src = link+"/do_html_fusion/" + encodeURIComponent(transcript); // send transcript to server and load response in iframe
-	//		//document.getElementById("microphone-btn").innerHTML = "Start Recording"; // reset button text
 		};
 	 
 	 

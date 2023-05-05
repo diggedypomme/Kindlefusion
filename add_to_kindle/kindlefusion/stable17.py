@@ -179,7 +179,7 @@ def disablescreensaver():
 
 
 
-@app.route("/")
+@app.route("/home")
 def home(theheight=285):
     theheight=int(theheight)
     randnum=random.randint(184,193)
@@ -251,7 +251,7 @@ def home(theheight=285):
     draw.text((450, 50), "{}:5000".format(ipaddr), fill=(255, 255, 255), font=ImageFont.truetype("/mnt/base-us/extensions/MRInstaller/data/BigBlue_Terminal.ttf", 20), anchor="mm")
     
     display_fb(new_im)
-    return "this failed"
+    return "Ok!"
 
 
 
@@ -936,6 +936,47 @@ def open_from_id(id_to_open):
     return "image {} applied".format(id_to_open)
 
 
+
+@app.route('/remove_id/<id_to_remove>')
+def remove_id(id_to_remove):
+    #open_image = Image.open("/mnt/us/kindlefusion/gallery/images/{}.jpg".format(id_to_open))
+    #display_fb(open_image)
+    
+    
+    print(id_to_remove)
+
+
+    # Load the current dictionary array from the file
+    current_dict_array = load_dict_array()
+
+    # Define the incoming variable
+    incoming_id = id_to_remove
+    print(current_dict_array)
+    # Iterate over each dictionary in the array
+    for dictionary in current_dict_array:
+        # Check if the "id" key in the dictionary matches the incoming variable
+        if dictionary["id"] == incoming_id:
+            # Remove the dictionary from the array
+            current_dict_array.remove(dictionary)
+            break
+
+    # Print the updated dictionary array
+    print(current_dict_array)
+    save_dict(current_dict_array) 
+
+    # Define the path to the file
+    file_path = 'gallery/images/{}.jpg'.format(incoming_id)
+
+    # Check if the file exists
+    if os.path.exists(file_path):
+        # Remove the file
+        os.remove(file_path)
+        print("File removed successfully")
+    else:
+        print("File does not exist")
+
+    
+    return "image {} removed".format(id_to_remove)
 
 
 # the stuff from automatic bridge
