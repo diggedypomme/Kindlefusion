@@ -1,6 +1,8 @@
+#!/bin/sh
+
 eips -c
 
-touch  '/mnt/us/documents/My Clippings.txt'
+touch "/mnt/us/documents/My Clippings.txt"
 
 mntroot rw
 
@@ -8,7 +10,7 @@ eips -c
 
 eips 14 5 "Installing libraries"
 
-eips 10 12 "Instaling PIP"
+eips 10 12 "Installing PIP"
 python3 -m ensurepip --upgrade
 eips 39 12 "Done"
 

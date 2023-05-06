@@ -8,8 +8,37 @@ from PIL import Image
 from io import BytesIO
 
 
+folder_address="C:/projects/stable/automatic/automatic3/stable-diffusion-webui/outputs/txt2img-images"
+upload_path="http://192.168.15.244:5000/uploadthen"
+
+upload_path_array=[
+    "http://192.168.0.229:5000/uploadthen",
+    "http://192.168.0.202:5000/uploadthen"
+    "http://192.168.0.210:5000/uploadthen"
+   
+]
 
 
+def get_upload_path(upload_path_array):
+    index = 0
+    while True:
+        yield upload_path_array[index]
+        index = (index + 1) % len(upload_path_array)
+        
+uploader = get_upload_path(upload_path_array)
+
+
+#upload_path = next(uploader)
+#print(upload_path)  # "http://192.168.15.244:5000/uploadthen"
+#
+#upload_path = next(uploader)
+#print(upload_path)  # "http://192.168.15.214:5000/uploadthen"
+#
+#upload_path = next(uploader)
+#print(upload_path)  # "http://192.168.15.224:5000/uploadthen"
+#
+#upload_path = next(uploader)
+#print(upload_path)  # "http://192.168.15.244:5000/uploadthen" (loops back to the beginning)
 
 print("--------------------------------------------------------------------------")
 print("--------------------------------------------------------------------------")
@@ -18,8 +47,7 @@ print("-------------------------------------------------------------------------
 print("--------------------------------------------------------------------------")
 
 #using most recent automatic1111 which places in subfolders sorted by day. Update this address
-folder_address="C:/projects/stable/automatic/automatic3/stable-diffusion-webui/outputs/txt2img-images"
-upload_path="http://192.168.15.244:5000/uploadthen"
+
 #print(folder_address)
 
 #get the folder
@@ -75,12 +103,14 @@ def send_off_image(dst_path):
     img_bytes=fix_filesize(img) 
 
     # Send the image to the endpoint as form data
-    url = upload_path
+    #url = upload_path
+    
+    url = next(uploader)
     files = {'image': ('output.png', img_bytes, 'image/png')}
     response = requests.post(url, files=files)
 
     print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-    print("justsend {} to {}".format(dst_path,upload_path))
+    print("justsend {} to {}".format(dst_path,url))
 
     # Display the response from the endpoint
     print( response.text)
