@@ -38,7 +38,7 @@ arg_parser.add_argument('-l', '--height', action="store", required=False, type=i
 arg_parser.add_argument('-s', '--steps', action="store", required=False, type=int, help="The amount of steps to use for this generation")
 arg_parser.add_argument('--api_key', type=str, action='store', required=False, help="The API Key to use to authenticate on the Horde. Get one in https://stablehorde.net")
 arg_parser.add_argument('-f', '--filename', type=str, action='store', required=False, help="The filename to use to save the images. If more than 1 image is generated, the number of generation will be prepended")
-arg_parser.add_argument('-v', '--verbosity', action='count', default=0, help="The default logging level is ERROR or higher. This value increases the amount of logging seen in your screen")
+arg_parser.add_argument('-v', '--verbosity', action='count', default=5, help="The default logging level is ERROR or higher. This value increases the amount of logging seen in your screen")
 arg_parser.add_argument('-q', '--quiet', action='count', default=0, help="The default logging level is ERROR or higher. This value decreases the amount of logging seen in your screen")
 arg_parser.add_argument('--horde', action="store", required=False, type=str, default="https://stablehorde.net", help="Use a different horde")
 arg_parser.add_argument('--nsfw', action="store_true", default=False, required=False, help="Mark the request as NSFW. Only servers which allow NSFW will pick it up")
@@ -771,14 +771,20 @@ def load_dict_array():
 
 
 def load_dict_array():
+    logger.error("I am running load_dict_array")
     try:
         with open('/mnt/us/kindlefusion/gallery/new_gallery.txt', 'r') as f:
             # Check if file is empty
             if os.stat('/mnt/us/kindlefusion/gallery/new_gallery.txt').st_size == 0:
                 loaded_dict_array = []
+                logger.error("I am running blanking")
             else:
+                logger.error("I am running floading")
                 loaded_dict_array = json.load(f)
+                logger.error(loaded_dict_array)
+                
     except FileNotFoundError:
+        logger.error("I am running file not found")
         loaded_dict_array = []
     return loaded_dict_array
 
@@ -792,7 +798,7 @@ def save_dict(current_dict_array):
 @app.route('/options/')
 def get_options():
     options = load_dict_array()
-    print(options )
+    #print(options )
     reversed_options = list(reversed(options))
     return jsonify(reversed_options)
 
@@ -800,23 +806,23 @@ def get_options():
 
 
 def save_image(img_data,image_origin,search_term):
-    print(">>>>>><<<<<<<<<<<")
+    logger.error(">>>>>>save_image<<<<<<<<<<<")
 
     current_dict_array=load_dict_array()
-    
+    logger.error(current_dict_array)
     print("current_dict_array")
-    print(current_dict_array)    
+    #print(current_dict_array)    
     
     #current_id_array=len(current_dict_array)
     # Generate a string with the current date and time
     now = datetime.now()
-    timestamp = now.strftime('%d%m%Y_%H_%M')
+    timestamp = now.strftime('%d%m%Y_%H_%M_%S')
 
     # Save the image with the timestamp as the filename
     
     img_data.save('gallery/images/{}.jpg'.format(timestamp))
     current_dict_array.append({"id": timestamp, "origin": image_origin, "search_term": search_term})
-    print(current_dict_array)
+    logger.error(current_dict_array)
     save_dict(current_dict_array)     
     
 

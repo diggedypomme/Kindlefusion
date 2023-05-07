@@ -12,9 +12,11 @@ folder_address="C:/projects/stable/automatic/automatic3/stable-diffusion-webui/o
 upload_path="http://192.168.15.244:5000/uploadthen"
 
 upload_path_array=[
-    "http://192.168.0.229:5000/uploadthen",
-    "http://192.168.0.202:5000/uploadthen"
-    "http://192.168.0.210:5000/uploadthen"
+    #"http://192.168.0.229:5000/uploadthen",
+    #"http://192.168.0.202:5000/uploadthen",
+    "http://192.168.0.219:5000/uploadthen",
+    "http://192.168.0.219:5000/uploadthen",
+    "http://192.168.0.219:5000/uploadthen",
    
 ]
 
