@@ -1,5 +1,5 @@
 # Kindlefusion
-version=17b
+version="17b"
 
 import json
 with open('/mnt/us/kindlefusion/secret_config.json') as f:
@@ -107,7 +107,7 @@ def uploader():
 
 @app.route("/")
 def thehome():
-      return render_template('welcome.html' ,loaded_kindlename=loaded_kindlename)
+      return render_template('welcome.html' ,loaded_kindlename=loaded_kindlename,version=version)
 
 @app.route("/sethordeapikey/<apikey>")
 def sethordeapikey(apikey):
@@ -781,7 +781,7 @@ def load_dict_array():
             else:
                 logger.error("I am running floading")
                 loaded_dict_array = json.load(f)
-                logger.error(loaded_dict_array)
+                #logger.error(loaded_dict_array)
                 
     except FileNotFoundError:
         logger.error("I am running file not found")
@@ -809,8 +809,8 @@ def save_image(img_data,image_origin,search_term):
     logger.error(">>>>>>save_image<<<<<<<<<<<")
 
     current_dict_array=load_dict_array()
-    logger.error(current_dict_array)
-    print("current_dict_array")
+    #logger.error(current_dict_array)
+    #print("current_dict_array")
     #print(current_dict_array)    
     
     #current_id_array=len(current_dict_array)
@@ -822,7 +822,7 @@ def save_image(img_data,image_origin,search_term):
     
     img_data.save('gallery/images/{}.jpg'.format(timestamp))
     current_dict_array.append({"id": timestamp, "origin": image_origin, "search_term": search_term})
-    logger.error(current_dict_array)
+    #logger.error(current_dict_array)
     save_dict(current_dict_array)     
     
 
