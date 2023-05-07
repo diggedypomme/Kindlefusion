@@ -1,5 +1,5 @@
 # Kindlefusion
-version=17
+version=17b
 
 import json
 with open('/mnt/us/kindlefusion/secret_config.json') as f:
