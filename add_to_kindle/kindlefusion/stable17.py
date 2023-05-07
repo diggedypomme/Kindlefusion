@@ -1,5 +1,5 @@
 # Kindlefusion
-version="17b"
+version="17c"
 
 import json
 with open('/mnt/us/kindlefusion/secret_config.json') as f:
@@ -610,6 +610,10 @@ def dofusion(searchterm,tag="robapi"):
                             return
                         chk_results = chk_req.json()
                         logger.info(chk_results)
+                        wait_time = chk_results['wait_time']
+                        os.system(f"eips 35 20 '{wait_time}'")
+                        
+                        #os.system("eips 10 10 'hi'")
                         is_done = chk_results['done']
                         time.sleep(0.8)
                     except ConnectionError as e:
