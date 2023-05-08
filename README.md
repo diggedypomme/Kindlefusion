@@ -12,7 +12,10 @@ This initially started as a project to allow highlighting of text within a kindl
 
 Kindlefusion creates a html front end that can be used to upload images or get these from Stable Horde (https://stablehorde.net) / Automatic1111. A separate script can run on your pc monitoring the output folder of Automatic1111 and sending each image through to the Kindle. If using the mobile page then requesting an image via voice can also be used.
 
-
+Youtube video explaining updates (v17):
+<BR>
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/1u91N8Ai91s/0.jpg)](https://youtu.be/1u91N8Ai91s)
+<BR><BR>
 Youtube explanation video for the old version:
 <BR>
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/SueGVpyrgG8/0.jpg)](https://www.youtube.com/watch?v=SueGVpyrgG8)
