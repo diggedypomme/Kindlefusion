@@ -82,26 +82,37 @@ Over SSH:
 
 Here are some previews of the interface:
 
+<strong>New Web interface:</strong>
+<div style="border: 1px solid black; padding: 5px; display: inline-block;">
+  <img src="/documentation/kf17ui.png" alt="Interface Preview" style="max-width: 50%; height: auto;">
+</div>
 
-<strong>Generating from a book. Note that this is now disabled:</strong>
-<div style="border: 1px solid black; padding: 5px; display: inline-block;">
-  <img src="/documentation/lookup.png" alt="Interface Preview" style="max-width: 50%; height: auto;">
-</div>
-<br>
-<strong>Old Web interface:</strong>
-<div style="border: 1px solid black; padding: 5px; display: inline-block;">
-  <img src="/documentation/interface.png" alt="Interface Preview" style="max-width: 50%; height: auto;">
-</div>
 <br>
 <strong>Selecting from gallery:</strong>
 <div style="border: 1px solid black; padding: 5px; display: inline-block;">
   <img src="/documentation/gallery.png" alt="Gallery Preview" style="max-width: 50%; height: auto;">
 </div>
 <br>
+
+<strong>Use of the new mobile html camera "app"</strong>
+<div style="border: 1px solid black; padding: 5px; display: inline-block;">
+  <img src="/documentation/caaam_mini.png" alt="Camera Preview" style="max-width: 50%; height: auto;">
+</div>
+
 <strong>Use of the old mobile html camera "app"</strong>
 <div style="border: 1px solid black; padding: 5px; display: inline-block;">
   <img src="/documentation/camera.png" alt="Camera Preview" style="max-width: 50%; height: auto;">
 </div>
+
+
+
+<strong>Generating from a book. Note that this is now disabled:</strong>
+<div style="border: 1px solid black; padding: 5px; display: inline-block;">
+  <img src="/documentation/lookup.png" alt="Interface Preview" style="max-width: 50%; height: auto;">
+</div>
+<br>
+
+
 
 
 
