@@ -953,15 +953,15 @@ def remove_id(id_to_remove):
     #display_fb(open_image)
     
     
-    print(id_to_remove)
 
+    logger.error("I am removing {}".format(id_to_remove))
 
     # Load the current dictionary array from the file
     current_dict_array = load_dict_array()
 
     # Define the incoming variable
     incoming_id = id_to_remove
-    print(current_dict_array)
+    #print(current_dict_array)
     # Iterate over each dictionary in the array
     for dictionary in current_dict_array:
         # Check if the "id" key in the dictionary matches the incoming variable
@@ -971,7 +971,7 @@ def remove_id(id_to_remove):
             break
 
     # Print the updated dictionary array
-    print(current_dict_array)
+    #print(current_dict_array)
     save_dict(current_dict_array) 
 
     # Define the path to the file
