@@ -16,7 +16,8 @@ upload_path_array=[
     #"http://192.168.0.202:5000/uploadthen",
     #"http://192.168.0.202:5000/uploadthen",
     #"http://192.168.0.200:5000/uploadthen",
-    "http://192.168.0.229:5000/uploadthen"
+    #"http://192.168.0.229:5000/uploadthen"
+    "http://192.168.0.207:5000/uploadthen"
     #"http://192.168.0.219:5000/uploadthen",
    
 ]
