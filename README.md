@@ -114,9 +114,9 @@ Here are some previews of the interface:
 
 
 
-
-
-
+## Kindle Time Machine
+Something I put together to go alongside Kindlefusion - pre generated images using stable diffusion for every minute of the day in different themes:
+https://github.com/diggedypomme/KindleTimeMachine
 
 
 ## Credits
